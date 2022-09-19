@@ -1,0 +1,11 @@
+CS 458 Group Project
+-------------------
+Jacqueline Chavez
+Antonio Aldaz
+Ayana Jackson
+---------------
+Ideas
+--------------
+-app for a restaurant where you can order pick up
+-equipment inventory for a company
+- home security app
