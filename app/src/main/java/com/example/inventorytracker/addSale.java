@@ -14,14 +14,22 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.widget.Button;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class addSale extends AppCompatActivity {
     //variables
-    EditText pid, pname, proqty, price, total, date;
+    EditText pid, pname, proqty, price, total;
+    private TextView date;
     Button addSale, calcSale;
+    private Calendar calendarDate;
+    private SimpleDateFormat dateFormat;
+    private String saleDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +40,13 @@ public class addSale extends AppCompatActivity {
         pname = findViewById(R.id.pname);
         proqty = findViewById(R.id.proqty);
         price = findViewById(R.id.proprice);
-        date = findViewById(R.id.dateSale);
+        date = findViewById(R.id.date);
         total = findViewById(R.id.total);
+        calendarDate = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        saleDate = dateFormat.format(calendarDate.getTime());
+        date.setText(saleDate);
+
 
         addSale = findViewById(R.id.addSale);
         calcSale = findViewById(R.id.calcSale);
@@ -60,6 +73,7 @@ public class addSale extends AppCompatActivity {
             String proname = pname.getText().toString();
             int qtysale = Integer.parseInt(proqty.getText().toString().trim());
             String pricepro =  price.getText().toString();
+            String saleDate = date.getText().toString();
             String totalsale = total.getText().toString();
 
             //open or create database
@@ -97,8 +111,8 @@ public class addSale extends AppCompatActivity {
                     else {
 
                         //create or open database
-                        db.execSQL("CREATE TABLE IF NOT EXISTS sales(proid VARCHAR,proname VARCHAR,qty VARCHAR, price VARCHAR,total VARCHAR)");
-                        String sql = "insert into sales(proid,proname,qty,price,total)values(?,?,?,?,?)";
+                        db.execSQL("CREATE TABLE IF NOT EXISTS sales(proid VARCHAR,proname VARCHAR,qty VARCHAR, price VARCHAR,total VARCHAR, date VARCHAR)");
+                        String sql = "insert into sales(proid,proname,qty,price,total,date)values(?,?,?,?,?)";
                         //create statement
                         SQLiteStatement statement = db.compileStatement(sql);
                         //attach to statement
@@ -107,6 +121,7 @@ public class addSale extends AppCompatActivity {
                         statement.bindLong(3, qty);
                         statement.bindString(4, pricepro);
                         statement.bindString(5, totalsale);
+                        statement.bindString(6, saleDate);
                         statement.execute();
                         //update product after sale
                         String sql1 = "update product set qty = qty - ? where id = ? ";
