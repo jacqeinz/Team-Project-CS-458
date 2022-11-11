@@ -1,9 +1,12 @@
+//Jacqueline Chavez Ayana Jackson
+//Mobile App Development
+//Inventory Tracker
 package com.example.inventorytracker;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class productview1 extends AppCompatActivity {
+public class productvariables extends AppCompatActivity {
     String id;
     String product;
     String category;
@@ -11,8 +14,5 @@ public class productview1 extends AppCompatActivity {
     String qty;
     String price;
     String total;
-    String titles;
-
-
 
 }

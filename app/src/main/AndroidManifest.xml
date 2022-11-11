@@ -24,7 +24,7 @@
             android:name=".viewSales"
             android:exported="false" />
         <activity
-            android:name=".productview1"
+            android:name=".productvariables"
             android:exported="false" />
         <activity
             android:name=".viewproduct"

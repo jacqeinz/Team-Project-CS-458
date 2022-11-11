@@ -1,3 +1,6 @@
+//Jacqueline Chavez Ayana Jackson
+//Mobile App Development
+//Inventory Tracker
 package com.example.inventorytracker;
 
 import android.content.Context;
@@ -14,69 +17,86 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class editCategory extends AppCompatActivity {
-    EditText ed1,ed2,ed3;
+    //variables
+    EditText cateID, cateName, cateDesc;
     Button edit, delete;
+    String id, cate, desc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_category);
-
-        ed1 = findViewById(R.id.cateID);
-        ed2 = findViewById(R.id.cateName);
-        ed3  = findViewById(R.id.catedesc);
+        //associate to UI components
+        cateID = findViewById(R.id.cateID);
+        cateName = findViewById(R.id.cateName);
+        cateDesc  = findViewById(R.id.catedesc);
         edit = findViewById(R.id.editbtn);
         delete = findViewById(R.id.deletebtn);
 
         Intent intent = getIntent();
-
-        String t1 = intent.getStringExtra("id");
-        String t2 = intent.getStringExtra("category");
-        String t3 = intent.getStringExtra("description");
-
-        ed1.setText(t1);
-        ed2.setText(t2);
-        ed3.setText(t3);
-
+        //get data from activity viewCategories
+        String id = intent.getStringExtra("id");
+        String cate = intent.getStringExtra("category");
+        String desc = intent.getStringExtra("description");
+        //display information sent
+        cateID.setText(id);
+        cateName.setText(cate);
+        cateDesc.setText(desc);
+        //set button to functions
         delete.setOnClickListener(v -> Delete());
         edit.setOnClickListener(v -> Edit());
     }
+
+    //to edit a category
+    public void Edit() {
+        try {
+            //get information for category
+            String id = cateID.getText().toString();
+            String category = cateName.getText().toString();
+            String catdes = cateDesc.getText().toString();
+            //open or create database
+            SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+            //update category with new information
+            String sql = "update category set category = ?,description=? where id= ?";
+            SQLiteStatement statement = db.compileStatement(sql);
+            //bind new information to statement
+            statement.bindString(1, category);
+            statement.bindString(2, catdes);
+            statement.bindString(3,id);
+            statement.execute();
+            //if successful
+            Toast.makeText(this, "Record Updated", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            //if editing fails
+        } catch (Exception ex) {
+            Toast.makeText(this, "Editing Record Failed", Toast.LENGTH_LONG).show();
+        }
+    }
+    //to delete category
     public void Delete()
     {
         try
         {
-            String id = ed1.getText().toString();
+            //extract id from UI component
+            String id = cateID.getText().toString();
+            //open or createdatabase
             SQLiteDatabase db = openOrCreateDatabase("inventory",Context.MODE_PRIVATE,null);
+            //delete category with that id
             String sql = "delete from category where id = ?";
+            //create statement
             SQLiteStatement statement = db.compileStatement(sql);
+            //bind to statement
             statement.bindString(1,id);
             statement.execute();
+            //if record is succesffully deleted
             Toast.makeText(this,"Record Deleted",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
         catch (Exception ex)
         {
-            Toast.makeText(this,"Record Fail",Toast.LENGTH_LONG).show();
-        }
-    }
-    public void Edit() {
-        try {
-            String id = ed1.getText().toString();
-            String category = ed2.getText().toString();
-            String catdes = ed3.getText().toString();
-            SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
-            String sql = "update category set category = ?,description=? where id= ?";
-            SQLiteStatement statement = db.compileStatement(sql);
-            statement.bindString(1, category);
-            statement.bindString(2, catdes);
-            statement.bindString(3,id);
-            statement.execute();
-            Toast.makeText(this, "Record Updated", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } catch (Exception ex) {
-            Toast.makeText(this, "Record Fail", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Deleting Record Failed",Toast.LENGTH_LONG).show();
         }
     }
 

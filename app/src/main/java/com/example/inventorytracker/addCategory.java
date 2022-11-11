@@ -1,3 +1,6 @@
+//Jacqueline Chavez Ayana Jackson
+//Mobile App Development
+//Inventory Tracker
 package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,13 +16,14 @@ import android.widget.Toast;
 
 
 public class addCategory extends AppCompatActivity {
+    //declare variables
     EditText name, desc;
     Button add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_category);
-        Intent i = getIntent();
+        Intent intent = getIntent();
         //assign variables to input from activity
         name = findViewById(R.id.catName);
         desc = findViewById(R.id.catdesc);
@@ -46,14 +50,14 @@ public class addCategory extends AppCompatActivity {
             statement.bindString(2, description);
             statement.execute();
             //popup message if record is sucessfully added
-            Toast.makeText(this, "Record added", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Category Added", Toast.LENGTH_LONG).show();
             //make EditText empty
             name.setText("");
             desc.setText("");
             name.requestFocus();
             //if record failed 
         } catch (Exception ex) {
-            Toast.makeText(this, "Record Fail", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Adding Record Failed", Toast.LENGTH_LONG).show();
         }
     }
 }

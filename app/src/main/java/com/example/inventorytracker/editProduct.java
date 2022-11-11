@@ -1,3 +1,7 @@
+
+//Jacqueline Chavez Ayana Jackson
+//Mobile App Development
+//Inventory Tracker
 package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,12 +20,12 @@ import android.widget.Toast;
 
 
 public class editProduct extends AppCompatActivity {
-    private Spinner spinner;
-    private Spinner spinner1;
-    ArrayAdapter arrayAdapter;
-    ArrayAdapter arrayAdapter1;
-    EditText ed1, ed2, ed3, ed4, ed5, ed6;
-    Button b1, b2;
+    private Spinner spinnercat;
+    private Spinner spinnersup;
+    ArrayAdapter arrayAdaptercat;
+    ArrayAdapter arrayAdaptersup;
+    EditText pid, pname, cateid, supid, proqty, proprice;
+    Button edit, delete;
     ArrayAdapter adapter;
 
 
@@ -31,14 +35,14 @@ public class editProduct extends AppCompatActivity {
         setContentView(R.layout.activity_editproduct);
 
 
-        ed1 = findViewById(R.id.pid);
-        ed2 = findViewById(R.id.pname);
-        ed5 = findViewById(R.id.cateid);
-        ed6 = findViewById(R.id.supid);
-        ed3 = findViewById(R.id.proqty);
-        ed4 = findViewById(R.id.proprice);
-        b1 = findViewById(R.id.addsup);
-        b2 = findViewById(R.id.delete);
+        pid = findViewById(R.id.pid);
+        pname = findViewById(R.id.pname);
+        cateid = findViewById(R.id.cateid);
+        supid = findViewById(R.id.supid);
+        proqty = findViewById(R.id.proqty);
+        proprice = findViewById(R.id.proprice);
+         edit = findViewById(R.id.addsup);
+        delete = findViewById(R.id.delete);
 
         Intent i = getIntent();
         String t1 = i.getStringExtra("id");
@@ -52,19 +56,12 @@ public class editProduct extends AppCompatActivity {
         ;
 
 
-        ed1.setText(t1);
-        ed2.setText(t2);
-        ed5.setText(t3);
-        ed6.setText(t4);
-       ed3.setText(t5);
-       ed4.setText(t6);
-
 
         
-        b2.setOnClickListener(v -> Delete());
+        edit.setOnClickListener(v -> Delete());
 
 
-        b1.setOnClickListener(v -> Edit());
+        delete.setOnClickListener(v -> Edit());
 
 
     }
@@ -75,7 +72,7 @@ public class editProduct extends AppCompatActivity {
     {
         try
         {
-            String id = ed1.getText().toString();
+            String id = pid.getText().toString();
 
             SQLiteDatabase db = openOrCreateDatabase("inventory",Context.MODE_PRIVATE,null);
 
@@ -110,9 +107,9 @@ public class editProduct extends AppCompatActivity {
 
     public void Edit() {
         try {
-            String id = ed1.getText().toString();
-            String product = ed2.getText().toString();
-            String productdes = ed3.getText().toString();
+            String id = pid.getText().toString();
+            String product = pname.getText().toString();
+            String productdes = cateid.getText().toString();
 
 
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
