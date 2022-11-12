@@ -46,10 +46,10 @@ public class editProduct extends AppCompatActivity {
 
         Intent i = getIntent();
         String t1 = i.getStringExtra("id");
-        String t2 = i.getStringExtra("product");
+        String t2 = i.getStringExtra("products");
         String t3 = i.getStringExtra("category");
 
-        String t4 = i.getStringExtra("supplier");
+        String t4 = i.getStringExtra("addSupplier");
         String t5 = i.getStringExtra("qty");
         String t6 = i.getStringExtra("price");
 

@@ -30,7 +30,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         <activity
-            android:name=".productvariables"
+            android:name=".products"
             android:exported="false" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -48,13 +48,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         <activity
-            android:name=".supplier"
+            android:name=".addSupplier"
             android:exported="false" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         <activity
-            android:name=".Product"
+            android:name=".addProduct"
             android:exported="false" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -66,7 +66,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         <activity
-            android:name=".categoryVariables"
+            android:name=".category"
             android:exported="false" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -78,7 +78,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         <activity
-            android:name=".supplierVariables"
+            android:name=".supplier"
             android:exported="false" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

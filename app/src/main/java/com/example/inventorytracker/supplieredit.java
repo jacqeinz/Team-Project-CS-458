@@ -31,7 +31,7 @@ public class supplieredit extends AppCompatActivity {
         Intent intent = getIntent();
 
         String id = intent.getStringExtra("id").toString();
-        String name = intent.getStringExtra("supplier").toString();
+        String name = intent.getStringExtra("addSupplier").toString();
         String desc = intent.getStringExtra("description").toString();
 
         supid.setText(id);

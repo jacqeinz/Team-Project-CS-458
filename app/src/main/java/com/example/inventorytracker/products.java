@@ -6,10 +6,13 @@ package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class categoryVariables extends AppCompatActivity {
+public class products extends AppCompatActivity {
     String id;
+    String product;
     String category;
-    String description;
-
+    String supplier;
+    String qty;
+    String price;
+    String total;
 
 }
