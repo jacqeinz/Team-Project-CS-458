@@ -1,3 +1,6 @@
+//Jacqueline Chavez Ayana Jackson
+//Mobile App Development
+//Inventory Tracker
 package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,7 +48,7 @@ public class supplier extends AppCompatActivity {
             statement.bindString(2, description);
 
             statement.execute();
-            Toast.makeText(this, "Supplier added", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Supplier Added", Toast.LENGTH_LONG).show();
 
 
             sup.setText("");
@@ -55,7 +58,7 @@ public class supplier extends AppCompatActivity {
 
 
         } catch (Exception ex) {
-            Toast.makeText(this, "Record Fail", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Adding Record Failed", Toast.LENGTH_LONG).show();
         }
 
     }

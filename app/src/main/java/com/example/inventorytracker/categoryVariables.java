@@ -1,3 +1,6 @@
+//Jacqueline Chavez Ayana Jackson
+//Mobile App Development
+//Inventory Tracker
 package com.example.inventorytracker;
 
 
@@ -8,5 +11,5 @@ public class categoryVariables extends AppCompatActivity {
     String category;
     String description;
 
-    String titles;
+
 }

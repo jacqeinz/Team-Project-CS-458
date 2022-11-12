@@ -1,3 +1,6 @@
+//Jacqueline Chavez Ayana Jackson
+//Mobile App Development
+//Inventory Tracker
 package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,9 +15,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class viewproduct extends AppCompatActivity {
-    ListView lst1;
-    ArrayList<String> titles = new ArrayList<String>();
-    ArrayAdapter arrayAdapter;
+    ListView lstPro;
+    ArrayList<String> pros = new ArrayList<String>();
+    ArrayAdapter arrayAdapterPro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +27,7 @@ public class viewproduct extends AppCompatActivity {
 
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
 
-        lst1 = findViewById(R.id.view);
+        lstPro = findViewById(R.id.view);
         final Cursor c = db.rawQuery("select * from product", null);
         int id = c.getColumnIndex("id");
         int product = c.getColumnIndex("proname");
@@ -32,19 +35,19 @@ public class viewproduct extends AppCompatActivity {
         int supplier = c.getColumnIndex("supplier");
         int qty = c.getColumnIndex("qty");
         int price = c.getColumnIndex("price");
-        titles.clear();
+        pros.clear();
 
 
-        arrayAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, titles);
-        lst1.setAdapter(arrayAdapter);
+        arrayAdapterPro = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, pros);
+        lstPro.setAdapter(arrayAdapterPro);
 
-        final ArrayList<productview1> product1 = new ArrayList<productview1>();
+        final ArrayList<productvariables> product1 = new ArrayList<productvariables>();
 
 
         if (c.moveToFirst()) {
             do {
 
-                productview1 stu = new productview1();
+                productvariables stu = new productvariables();
                 stu.id = c.getString(id);
                 stu.product = c.getString(product);
                 stu.category = c.getString(category);
@@ -52,19 +55,19 @@ public class viewproduct extends AppCompatActivity {
                 stu.qty = c.getString(qty);
                 stu.price = c.getString(price);
                 product1.add(stu);
-                titles.add(c.getString(id) + " \t " + c.getString(product) + " \t " + c.getString(category) + " \t " + c.getString(supplier) + " \t " + c.getString(qty) + " \t " + c.getString(price));
+                pros.add(c.getString(id) + " \t " + c.getString(product) + " \t " + c.getString(category) + " \t " + c.getString(supplier) + " \t " + c.getString(qty) + " \t " + c.getString(price));
 
             } while (c.moveToNext());
-            arrayAdapter.notifyDataSetChanged();
-            lst1.invalidateViews();
+            arrayAdapterPro.notifyDataSetChanged();
+            lstPro.invalidateViews();
 
 
         }
 
-        lst1.setOnItemClickListener((parent, view, position, id1) -> {
+        lstPro.setOnItemClickListener((parent, view, position, id1) -> {
 
-            String aa = titles.get(position);
-            productview1 stu = product1.get(position);
+
+            productvariables stu = product1.get(position);
             Intent intent = new Intent(this, editProduct.class);
             intent.putExtra("id", stu.id);
             intent.putExtra("product", stu.product);

@@ -1,3 +1,6 @@
+//Jacqueline Chavez Ayana Jackson
+//Mobile App Development
+//Inventory Tracker
 package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,38 +15,30 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class supplieredit extends AppCompatActivity {
-    EditText ed1,ed2,ed3;
-    Button b1,b2;
+    EditText supid, supn, supd;
+    Button edit, delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplieredit);
-        ed1 = findViewById(R.id.supplierid);
-        ed2 = findViewById(R.id.supname);
-        ed3  = findViewById(R.id.supdesc);
-        b1 = findViewById(R.id.editsup);
-        b2 = findViewById(R.id.deletesup);
+        supid = findViewById(R.id.supplierid);
+        supn = findViewById(R.id.supname);
+        supd  = findViewById(R.id.supdesc);
+        edit = findViewById(R.id.editsup);
+        delete = findViewById(R.id.deletesup);
 
-        Intent i = getIntent();
+        Intent intent = getIntent();
 
-        String t1 = i.getStringExtra("id").toString();
-        String t2 = i.getStringExtra("supplier").toString();
-        String t3 = i.getStringExtra("description").toString();
+        String id = intent.getStringExtra("id").toString();
+        String name = intent.getStringExtra("supplier").toString();
+        String desc = intent.getStringExtra("description").toString();
 
-        ed1.setText(t1);
-        ed2.setText(t2);
-        ed3.setText(t3);
-
-        b2.setOnClickListener(v -> Delete());
-
-
-
-
-        b1.setOnClickListener(v -> Edit());
-
-
-
+        supid.setText(id);
+        supn.setText(name);
+        supd.setText(desc);
+        edit.setOnClickListener(v -> Edit());
+        delete.setOnClickListener(v -> Delete());
 
     }
 
@@ -51,7 +46,7 @@ public class supplieredit extends AppCompatActivity {
     {
         try
         {
-            String id = ed1.getText().toString();
+            String id = supid.getText().toString();
 
             SQLiteDatabase db = openOrCreateDatabase("inventory",Context.MODE_PRIVATE,null);
 
@@ -64,8 +59,8 @@ public class supplieredit extends AppCompatActivity {
             Toast.makeText(this,"Record Deleted",Toast.LENGTH_LONG).show();
 
 
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(i);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
 
 
 
@@ -75,20 +70,13 @@ public class supplieredit extends AppCompatActivity {
             Toast.makeText(this,"Record Fail",Toast.LENGTH_LONG).show();
         }
 
-
-
     }
-
-
-
-
-
 
     public void Edit() {
         try {
-            String id = ed1.getText().toString();
-            String supplier = ed2.getText().toString();
-            String supplierdes = ed3.getText().toString();
+            String id = supid.getText().toString();
+            String supplier = supn.getText().toString();
+            String supplierdes = supd.getText().toString();
 
 
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
@@ -102,8 +90,8 @@ public class supplieredit extends AppCompatActivity {
             statement.execute();
             Toast.makeText(this, "Record Updated", Toast.LENGTH_LONG).show();
 
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(i);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
 
         } catch (Exception ex) {
             Toast.makeText(this, "Record Fail", Toast.LENGTH_LONG).show();

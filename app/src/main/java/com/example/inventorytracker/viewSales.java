@@ -1,3 +1,6 @@
+//Jacqueline Chavez Ayana Jackson
+//Mobile App Development
+//Inventory Tracker
 package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +14,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class viewSales extends AppCompatActivity {
-    ListView view;
-    ArrayList<String> titles = new ArrayList<String>();
-    ArrayAdapter arrayAdapter;
+    ListView viewSales;
+    ArrayList<String> sales = new ArrayList<String>();
+    ArrayAdapter arrayAdapterSale;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,38 +24,38 @@ public class viewSales extends AppCompatActivity {
 
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
 
-        view = findViewById(R.id.view);
+        viewSales = findViewById(R.id.view);
         final Cursor c = db.rawQuery("select * from sales",null);
         int proid = c.getColumnIndex("proid");
         int proname = c.getColumnIndex("proname");
         int qty = c.getColumnIndex("qty");
         int price = c.getColumnIndex("price");
         int total = c.getColumnIndex("total");
-        titles.clear();
+        sales.clear();
 
 
-        arrayAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,titles);
-        view.setAdapter(arrayAdapter);
+        arrayAdapterSale = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sales);
+        viewSales.setAdapter(arrayAdapterSale);
 
-        final  ArrayList<productview1> product1 = new ArrayList<productview1>();
+        final  ArrayList<productvariables> product1 = new ArrayList<productvariables>();
 
 
         if(c.moveToFirst())
         {
             do{
-                productview1 stu = new productview1();
+                productvariables stu = new productvariables();
                 stu.id = c.getString(proid);
                 stu.product = c.getString(proname);
                 stu.qty= c.getString(qty);
                 stu.price = c.getString(price);
                 stu.total = c.getString(total);
                 product1.add(stu);
-                titles.add(c.getString(proid) + " \t " + c.getString(proname) + " \t "  + c.getString(qty)   + " \t " + c.getString(price) + " \t " + c.getString(total));
+                sales.add(c.getString(proid) + " \t " + c.getString(proname) + " \t "  + c.getString(qty)   + " \t " + c.getString(price) + " \t " + c.getString(total));
 
             }
             while(c.moveToNext());
-            arrayAdapter.notifyDataSetChanged();
-            view.invalidateViews();
+            arrayAdapterSale.notifyDataSetChanged();
+            viewSales.invalidateViews();
         }
 
     }

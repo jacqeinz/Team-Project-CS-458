@@ -1,3 +1,6 @@
+//Jacqueline Chavez Ayana Jackson
+//Mobile App Development
+//Inventory Tracker
 package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,10 +29,10 @@ public class Product extends AppCompatActivity {
     //declare componenets, variables
     private Spinner spinnercat;
     private Spinner spinnersup;
-    ArrayList<String> titles = new ArrayList<String>();
-    ArrayList<String> titles1 = new ArrayList<String>();
-    ArrayAdapter arrayAdapter;
-    ArrayAdapter arrayAdapter1;
+    ArrayList<String> cats = new ArrayList<String>();
+    ArrayList<String> sups = new ArrayList<String>();
+    ArrayAdapter arrayAdaptersup;
+    ArrayAdapter arrayAdaptercat;
     EditText name,proqty, proprice;
     Button add;
 
@@ -37,7 +40,7 @@ public class Product extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-
+        //link to UI components
         name = findViewById(R.id.pname);
         spinnercat = findViewById(R.id.catID);
         spinnersup = findViewById(R.id.supID);
@@ -45,42 +48,43 @@ public class Product extends AppCompatActivity {
         proprice = findViewById(R.id.proprice);
         add = findViewById(R.id.addbtn);
         add.setOnClickListener(v -> insert());
-        //category spinner
+        //open or create database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+        //category spinner
         final Cursor c = db.rawQuery("select category from category",null);
         int category = c.getColumnIndex("category");
-        titles.clear();
-        arrayAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,titles);
-        spinnercat.setAdapter(arrayAdapter);
+        cats.clear();
+        arrayAdaptersup = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
+        spinnercat.setAdapter(arrayAdaptersup);
 
-        final  ArrayList<categoryVariables> stud = new ArrayList<categoryVariables>();
+        final  ArrayList<categoryVariables> cates = new ArrayList<categoryVariables>();
         if(c.moveToFirst()) {
             do {
-                categoryVariables stu = new categoryVariables();
-                stu.category = c.getString(category);
-                stud.add(stu);
-                titles.add(c.getString(category) );
+                categoryVariables cate = new categoryVariables();
+                cate.category = c.getString(category);
+                cates.add(cate);
+                cats.add(c.getString(category) );
 
             } while (c.moveToNext());
-            arrayAdapter.notifyDataSetChanged();
+            arrayAdaptersup.notifyDataSetChanged();
 
         }
         //Supplier spinner
         final Cursor b = db.rawQuery("select supplier from supplier",null);
         int supplier = b.getColumnIndex("supplier");
-        titles1.clear();
-        arrayAdapter1= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,titles1);
-        spinnersup.setAdapter(arrayAdapter1);
+        sups.clear();
+        arrayAdaptercat= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
+        spinnersup.setAdapter(arrayAdaptercat);
         final  ArrayList<supplierVariables> suppliers = new ArrayList<supplierVariables>();
 
         if(b.moveToFirst()) {
             do {
-                supplierVariables aa = new supplierVariables();
-                aa.supplier = b.getString(supplier);
-                suppliers.add(aa);
-                titles1.add(b.getString(supplier) );
+                supplierVariables sup = new supplierVariables();
+                sup.supplier = b.getString(supplier);
+                suppliers.add(sup);
+                sups.add(b.getString(supplier) );
             } while (b.moveToNext());
-            arrayAdapter1.notifyDataSetChanged();
+            arrayAdaptercat.notifyDataSetChanged();
 
         }
 
@@ -112,7 +116,7 @@ public class Product extends AppCompatActivity {
             name.requestFocus();
 
         } catch (Exception ex) {
-            Toast.makeText(this, "Record Failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Adding Record Failed", Toast.LENGTH_LONG).show();
         }
     }
 
