@@ -9,23 +9,19 @@ import android.os.Bundle;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Product extends AppCompatActivity {
+public class addProduct extends AppCompatActivity {
     //declare componenets, variables
     private Spinner spinnercat;
     private Spinner spinnersup;
@@ -55,12 +51,12 @@ public class Product extends AppCompatActivity {
         int category = c.getColumnIndex("category");
         cats.clear();
         arrayAdaptersup = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
-        spinnercat.setAdapter(arrayAdaptersup);
+        spinnercat.setAdapter(arrayAdaptercat);
 
-        final  ArrayList<categoryVariables> cates = new ArrayList<categoryVariables>();
+        final  ArrayList<category> cates = new ArrayList<com.example.inventorytracker.category>();
         if(c.moveToFirst()) {
             do {
-                categoryVariables cate = new categoryVariables();
+                category cate = new category();
                 cate.category = c.getString(category);
                 cates.add(cate);
                 cats.add(c.getString(category) );
@@ -74,12 +70,12 @@ public class Product extends AppCompatActivity {
         int supplier = b.getColumnIndex("supplier");
         sups.clear();
         arrayAdaptercat= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
-        spinnersup.setAdapter(arrayAdaptercat);
-        final  ArrayList<supplierVariables> suppliers = new ArrayList<supplierVariables>();
+        spinnersup.setAdapter(arrayAdaptersup);
+        final  ArrayList<supplier> suppliers = new ArrayList<com.example.inventorytracker.supplier>();
 
         if(b.moveToFirst()) {
             do {
-                supplierVariables sup = new supplierVariables();
+                supplier sup = new supplier();
                 sup.supplier = b.getString(supplier);
                 suppliers.add(sup);
                 sups.add(b.getString(supplier) );
@@ -89,7 +85,7 @@ public class Product extends AppCompatActivity {
         }
 
     }
-//add product
+//add products
     public void insert() {
         try {
             //extra variables

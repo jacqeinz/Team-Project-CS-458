@@ -20,7 +20,6 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class addSale extends AppCompatActivity {
     //variables
@@ -80,21 +79,21 @@ public class addSale extends AppCompatActivity {
             //open or create database
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
             String id = pid.getText().toString();
-            //look for product with that ID
+            //look for products with that ID
             final Cursor c = db.rawQuery("select * from product where id = '"+id+"' ",null);
-            //get quantity of that product
+            //get quantity of that products
             int qty = c.getColumnIndex("qty");
 
-            final  ArrayList<productvariables> product1 = new ArrayList<productvariables>();
+            final  ArrayList<products> products1 = new ArrayList<products>();
             if(c.moveToFirst())
             {
                 do{
                     //create object
-                    productvariables product = new productvariables();
+                    products products = new products();
                     //set qty
-                    product.qty= c.getString(qty);
+                    products.qty= c.getString(qty);
 
-                    product1.add(product);
+                    products1.add(products);
 
 
                     int oldqty = Integer.parseInt(c.getString(qty));
@@ -123,7 +122,7 @@ public class addSale extends AppCompatActivity {
                         statement.bindString(4, pricepro);
                         statement.bindString(5, totalsale);
                         statement.execute();
-                        //update product after sale
+                        //update products after sale
                         String sql1 = "update product set qty = qty - ? where id = ? ";
                         SQLiteStatement statement1 = db.compileStatement(sql1);
                         statement1.bindLong(1, qtysale);

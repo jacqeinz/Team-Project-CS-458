@@ -34,10 +34,10 @@ public class viewCategories extends AppCompatActivity {
         cates.clear();
         arrayAdapterView = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, cates);
         lstCate.setAdapter(arrayAdapterView);
-        final ArrayList<categoryVariables> cat = new ArrayList<categoryVariables>();
+        final ArrayList<category> cat = new ArrayList<com.example.inventorytracker.category>();
         if (c.moveToFirst()) {
             do {
-                categoryVariables cate = new categoryVariables();
+                category cate = new category();
                 cate.id = c.getString(id);
                 cate.category = c.getString(category);
                 cate.description = c.getString(description);
@@ -51,7 +51,7 @@ public class viewCategories extends AppCompatActivity {
         lstCate.setOnItemClickListener((parent, view, position, id1) -> {
 
 
-            categoryVariables cate = cat.get(position);
+            category cate = cat.get(position);
             Intent intent = new Intent(this, editCategory.class);
             intent.putExtra("id", cate.id);
             intent.putExtra("category", cate.category);

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void goToAddSupplier(View view){
-        Intent intent = new Intent(this, supplier.class);
+        Intent intent = new Intent(this, addSupplier.class);
         startActivity(intent);
     }
     public void goToAddInventoryOrder(View view){
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void goToAddProduct(View view){
-        Intent intent = new Intent(this, Product.class);
+        Intent intent = new Intent(this, addProduct.class);
         startActivity(intent);
     }
     private void createDatabases(){
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void createSupplierDatabase(){
-        //select from supplier to check if anything is here. if so, return
+        //select from addSupplier to check if anything is here. if so, return
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS supplier(id INTEGER PRIMARY KEY AUTOINCREMENT,supplier VARCHAR,description VARCHAR)");
         String sql3 = "insert into supplier(supplier,description)values(?,?)";

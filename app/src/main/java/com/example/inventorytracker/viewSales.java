@@ -37,19 +37,19 @@ public class viewSales extends AppCompatActivity {
         arrayAdapterSale = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sales);
         viewSales.setAdapter(arrayAdapterSale);
 
-        final  ArrayList<productvariables> product1 = new ArrayList<productvariables>();
+        final  ArrayList<products> products1 = new ArrayList<products>();
 
 
         if(c.moveToFirst())
         {
             do{
-                productvariables stu = new productvariables();
+                products stu = new products();
                 stu.id = c.getString(proid);
                 stu.product = c.getString(proname);
                 stu.qty= c.getString(qty);
                 stu.price = c.getString(price);
                 stu.total = c.getString(total);
-                product1.add(stu);
+                products1.add(stu);
                 sales.add(c.getString(proid) + " \t " + c.getString(proname) + " \t "  + c.getString(qty)   + " \t " + c.getString(price) + " \t " + c.getString(total));
 
             }
