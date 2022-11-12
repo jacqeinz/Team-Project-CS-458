@@ -43,13 +43,13 @@ public class viewSales extends AppCompatActivity {
         if(c.moveToFirst())
         {
             do{
-                products stu = new products();
-                stu.id = c.getString(proid);
-                stu.product = c.getString(proname);
-                stu.qty= c.getString(qty);
-                stu.price = c.getString(price);
-                stu.total = c.getString(total);
-                products1.add(stu);
+                products pro = new products();
+                pro.id = c.getString(proid);
+                pro.product = c.getString(proname);
+                pro.qty= c.getString(qty);
+                pro.price = c.getString(price);
+                pro.total = c.getString(total);
+                products1.add(pro);
                 sales.add(c.getString(proid) + " \t " + c.getString(proname) + " \t "  + c.getString(qty)   + " \t " + c.getString(price) + " \t " + c.getString(total));
 
             }
