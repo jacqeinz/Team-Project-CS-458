@@ -19,58 +19,112 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".viewSales"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".productvariables"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".viewproduct"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".editProduct"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".supplier"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".Product"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".editCategory"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".categoryVariables"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".supplieredit"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".supplierVariables"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".viewInventoryOrders"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".addInventoryOrder"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".addUser"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".addCategory"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".viewSuppliers"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".addSale"
             android:exported="false" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         <activity
             android:name=".login"
             android:exported="false" />
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true" >
