@@ -6,6 +6,7 @@ package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.content.Intent;
 import android.widget.ArrayAdapter;
@@ -18,15 +19,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class editProduct extends AppCompatActivity {
+    //variables
     private Spinner spinnercat;
     private Spinner spinnersup;
     ArrayAdapter arrayAdaptercat;
     ArrayAdapter arrayAdaptersup;
-    EditText pid, pname, cateid, supid, proqty, proprice;
+    EditText pid, pname, proqty, proprice;
     Button edit, delete;
-    ArrayAdapter adapter;
+    ArrayList<String> cats = new ArrayList<String>();
+    ArrayList<String> sups = new ArrayList<String>();
+
 
 
     @Override
@@ -37,23 +43,67 @@ public class editProduct extends AppCompatActivity {
 
         pid = findViewById(R.id.pid);
         pname = findViewById(R.id.pname);
-        cateid = findViewById(R.id.cateid);
-        supid = findViewById(R.id.supid);
+        spinnercat = findViewById(R.id.cateid);
+        spinnersup = findViewById(R.id.supid);
         proqty = findViewById(R.id.proqty);
         proprice = findViewById(R.id.proprice);
          edit = findViewById(R.id.addsup);
         delete = findViewById(R.id.delete);
 
-        Intent i = getIntent();
-        String t1 = i.getStringExtra("id");
-        String t2 = i.getStringExtra("products");
-        String t3 = i.getStringExtra("category");
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("id");
+        String pro = intent.getStringExtra("products");
+        String categ = intent.getStringExtra("category");
 
-        String t4 = i.getStringExtra("addSupplier");
-        String t5 = i.getStringExtra("qty");
-        String t6 = i.getStringExtra("price");
+        String supp = intent.getStringExtra("addSupplier");
+        String qty = intent.getStringExtra("qty");
+        String price = intent.getStringExtra("price");
 
-        ;
+        pid.setText(id);
+        pname.setText(pro);
+
+        proqty.setText(qty);
+        proprice.setText(price);
+        //open or create database
+        SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+        //category spinner
+        final Cursor c = db.rawQuery("select category from category",null);
+        int category = c.getColumnIndex("category");
+        cats.clear();
+        arrayAdaptersup = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
+        spinnercat.setAdapter(arrayAdaptercat);
+
+        final ArrayList<category> cates = new ArrayList<com.example.inventorytracker.category>();
+        if(c.moveToFirst()) {
+            do {
+                category cate = new category();
+                cate.category = c.getString(category);
+                cates.add(cate);
+                cats.add(c.getString(category) );
+
+            } while (c.moveToNext());
+            arrayAdaptersup.notifyDataSetChanged();
+
+        }
+        //Supplier spinner
+        final Cursor b = db.rawQuery("select supplier from supplier",null);
+        int supplier = b.getColumnIndex("supplier");
+        sups.clear();
+        arrayAdaptercat= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
+        spinnersup.setAdapter(arrayAdaptersup);
+        final  ArrayList<supplier> suppliers = new ArrayList<com.example.inventorytracker.supplier>();
+
+        if(b.moveToFirst()) {
+            do {
+                supplier sup = new supplier();
+                sup.supplier = b.getString(supplier);
+                suppliers.add(sup);
+                sups.add(b.getString(supplier) );
+            } while (b.moveToNext());
+            arrayAdaptercat.notifyDataSetChanged();
+
+        }
+
 
 
 
@@ -107,27 +157,32 @@ public class editProduct extends AppCompatActivity {
 
     public void Edit() {
         try {
+            //extra variables
             String id = pid.getText().toString();
-            String product = pname.getText().toString();
-            String productdes = cateid.getText().toString();
-
-
+            String productname = pname.getText().toString();
+            String category = spinnercat.getSelectedItem().toString();
+            String supplier = spinnersup.getSelectedItem().toString();
+            String qty = proqty.getText().toString();
+            String price = proprice.getText().toString();
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+            String sql = "update product set product = ?,category=?, supplier = ?, qty = ?, price = ? where id= ?";
 
 
-            String sql = "update product set product = ?,description=? where id= ?";
             SQLiteStatement statement = db.compileStatement(sql);
-            statement.bindString(1, product);
-            statement.bindString(2, productdes);
-            statement.bindString(3,id);
+            statement.bindString(1, productname);
+            statement.bindString(2, category);
+            statement.bindString(3, supplier);
+            statement.bindString(4, qty);
+            statement.bindString(5, price);
             statement.execute();
-            Toast.makeText(this, "Record Updated", Toast.LENGTH_LONG).show();
-
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            Toast.makeText(this, "Product added", Toast.LENGTH_LONG).show();
+            pname.setText("");
+            proqty.setText("");
+            proprice.setText("");
+            pname.requestFocus();
 
         } catch (Exception ex) {
-            Toast.makeText(this, "Record Fail", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Adding Record Failed", Toast.LENGTH_LONG).show();
         }
 
 
