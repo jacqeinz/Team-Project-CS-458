@@ -38,7 +38,7 @@ public class editProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editproduct);
 
-
+        //link to UI components
         pid = findViewById(R.id.pid);
         pname = findViewById(R.id.pname);
         spinnercat = findViewById(R.id.cateid);
@@ -51,9 +51,9 @@ public class editProduct extends AppCompatActivity {
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
         String pro = intent.getStringExtra("products");
-        String categ = intent.getStringExtra("category");
+        //String categ = intent.getStringExtra("category");
 
-        String supp = intent.getStringExtra("addSupplier");
+        //String supp = intent.getStringExtra("addSupplier");
         String qty = intent.getStringExtra("qty");
         String price = intent.getStringExtra("price");
 
