@@ -13,13 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
+import java.util.ArrayList;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 
 public class editProduct extends AppCompatActivity {
@@ -47,7 +45,7 @@ public class editProduct extends AppCompatActivity {
         spinnersup = findViewById(R.id.supid);
         proqty = findViewById(R.id.proqty);
         proprice = findViewById(R.id.proprice);
-         edit = findViewById(R.id.addsup);
+         edit = findViewById(R.id.edit);
         delete = findViewById(R.id.delete);
 
         Intent intent = getIntent();
@@ -70,7 +68,7 @@ public class editProduct extends AppCompatActivity {
         final Cursor c = db.rawQuery("select category from category",null);
         int category = c.getColumnIndex("category");
         cats.clear();
-        arrayAdaptersup = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
+        arrayAdaptercat = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
         spinnercat.setAdapter(arrayAdaptercat);
 
         final ArrayList<category> cates = new ArrayList<com.example.inventorytracker.category>();
@@ -82,14 +80,14 @@ public class editProduct extends AppCompatActivity {
                 cats.add(c.getString(category) );
 
             } while (c.moveToNext());
-            arrayAdaptersup.notifyDataSetChanged();
+            arrayAdaptercat.notifyDataSetChanged();
 
         }
         //Supplier spinner
         final Cursor b = db.rawQuery("select supplier from supplier",null);
         int supplier = b.getColumnIndex("supplier");
         sups.clear();
-        arrayAdaptercat= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
+        arrayAdaptersup= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
         spinnersup.setAdapter(arrayAdaptersup);
         final  ArrayList<supplier> suppliers = new ArrayList<com.example.inventorytracker.supplier>();
 
@@ -100,7 +98,7 @@ public class editProduct extends AppCompatActivity {
                 suppliers.add(sup);
                 sups.add(b.getString(supplier) );
             } while (b.moveToNext());
-            arrayAdaptercat.notifyDataSetChanged();
+            arrayAdaptersup.notifyDataSetChanged();
 
         }
 
@@ -108,10 +106,10 @@ public class editProduct extends AppCompatActivity {
 
 
         
-        edit.setOnClickListener(v -> Delete());
+        edit.setOnClickListener(v -> Edit());
 
 
-        delete.setOnClickListener(v -> Edit());
+        delete.setOnClickListener(v -> Delete());
 
 
     }
@@ -143,7 +141,7 @@ public class editProduct extends AppCompatActivity {
         }
         catch (Exception ex)
         {
-            Toast.makeText(this,"Record Fail",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Record Deleting Failed",Toast.LENGTH_LONG).show();
         }
 
 
@@ -157,7 +155,6 @@ public class editProduct extends AppCompatActivity {
 
     public void Edit() {
         try {
-            //extra variables
             String id = pid.getText().toString();
             String productname = pname.getText().toString();
             String category = spinnercat.getSelectedItem().toString();
@@ -174,15 +171,14 @@ public class editProduct extends AppCompatActivity {
             statement.bindString(3, supplier);
             statement.bindString(4, qty);
             statement.bindString(5, price);
+            statement.bindString(6, id);
             statement.execute();
-            Toast.makeText(this, "Product added", Toast.LENGTH_LONG).show();
-            pname.setText("");
-            proqty.setText("");
-            proprice.setText("");
-            pname.requestFocus();
+            Toast.makeText(this, "Record Updated", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
 
         } catch (Exception ex) {
-            Toast.makeText(this, "Adding Record Failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Updating Record Failed", Toast.LENGTH_LONG).show();
         }
 
 
