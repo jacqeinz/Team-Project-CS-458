@@ -31,7 +31,7 @@ public class supplieredit extends AppCompatActivity {
         Intent intent = getIntent();
 
         String id = intent.getStringExtra("id").toString();
-        String name = intent.getStringExtra("addSupplier").toString();
+        String name = intent.getStringExtra("supplier").toString();
         String desc = intent.getStringExtra("description").toString();
 
         supid.setText(id);
@@ -59,7 +59,7 @@ public class supplieredit extends AppCompatActivity {
             Toast.makeText(this,"Record Deleted",Toast.LENGTH_LONG).show();
 
 
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
 
 

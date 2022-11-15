@@ -50,7 +50,7 @@ public class addProduct extends AppCompatActivity {
         final Cursor c = db.rawQuery("select category from category",null);
         int category = c.getColumnIndex("category");
         cats.clear();
-        arrayAdaptersup = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
+        arrayAdaptercat = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
         spinnercat.setAdapter(arrayAdaptercat);
 
         final  ArrayList<category> cates = new ArrayList<com.example.inventorytracker.category>();
@@ -62,14 +62,14 @@ public class addProduct extends AppCompatActivity {
                 cats.add(c.getString(category) );
 
             } while (c.moveToNext());
-            arrayAdaptersup.notifyDataSetChanged();
+            arrayAdaptercat.notifyDataSetChanged();
 
         }
         //Supplier spinner
         final Cursor b = db.rawQuery("select supplier from supplier",null);
         int supplier = b.getColumnIndex("supplier");
         sups.clear();
-        arrayAdaptercat= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
+        arrayAdaptersup= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
         spinnersup.setAdapter(arrayAdaptersup);
         final  ArrayList<supplier> suppliers = new ArrayList<com.example.inventorytracker.supplier>();
 
@@ -80,7 +80,7 @@ public class addProduct extends AppCompatActivity {
                 suppliers.add(sup);
                 sups.add(b.getString(supplier) );
             } while (b.moveToNext());
-            arrayAdaptercat.notifyDataSetChanged();
+            arrayAdaptersup.notifyDataSetChanged();
 
         }
 

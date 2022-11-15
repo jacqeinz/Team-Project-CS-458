@@ -28,7 +28,7 @@ public class addSupplier extends AppCompatActivity {
         sup = findViewById(R.id.supID);
         desc = findViewById(R.id.supplierdesc);
 
-        add = findViewById(R.id.addsup);
+        add = findViewById(R.id.edit);
 
 
         add.setOnClickListener(v -> insert());
