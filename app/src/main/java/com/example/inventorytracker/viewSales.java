@@ -39,7 +39,7 @@ public class viewSales extends AppCompatActivity {
 
         final  ArrayList<products> products1 = new ArrayList<products>();
 
-
+        //loop through rows and add to arraylist
         if(c.moveToFirst())
         {
             do{
