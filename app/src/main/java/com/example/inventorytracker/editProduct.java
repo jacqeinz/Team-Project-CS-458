@@ -50,10 +50,10 @@ public class editProduct extends AppCompatActivity {
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
-        String pro = intent.getStringExtra("products");
-        //String categ = intent.getStringExtra("category");
+        String pro = intent.getStringExtra("product");
+        String categ = intent.getStringExtra("category");
 
-        //String supp = intent.getStringExtra("addSupplier");
+        String supp = intent.getStringExtra("supplier");
         String qty = intent.getStringExtra("qty");
         String price = intent.getStringExtra("price");
 
@@ -156,17 +156,15 @@ public class editProduct extends AppCompatActivity {
     public void Edit() {
         try {
             String id = pid.getText().toString();
-            String productname = pname.getText().toString();
+            String proname = pname.getText().toString();
             String category = spinnercat.getSelectedItem().toString();
             String supplier = spinnersup.getSelectedItem().toString();
             String qty = proqty.getText().toString();
             String price = proprice.getText().toString();
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
-            String sql = "update product set product = ?,category=?, supplier = ?, qty = ?, price = ? where id= ?";
-
-
+            String sql = "update product set proname = ?,category=?,supplier = ?,qty = ?,price = ? where id= ?";
             SQLiteStatement statement = db.compileStatement(sql);
-            statement.bindString(1, productname);
+            statement.bindString(1, proname);
             statement.bindString(2, category);
             statement.bindString(3, supplier);
             statement.bindString(4, qty);
