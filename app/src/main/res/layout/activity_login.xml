@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.118" />
+        app:layout_constraintVertical_bias="0.118" android:minHeight="48dp"android:textColorHint="#757575"android:importantForAutofill="no"/>
 
     <EditText
         android:id="@+id/password"
@@ -32,7 +32,7 @@
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintVertical_bias="0.258" android:minHeight="48dp"android:textColorHint="#757575"/>
 
     <Button
         android:id="@+id/register"
