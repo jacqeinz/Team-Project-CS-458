@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class supplieredit extends AppCompatActivity {
+    //variables
     EditText supid, supn, supd;
     Button edit, delete;
 
@@ -27,13 +28,13 @@ public class supplieredit extends AppCompatActivity {
         supd  = findViewById(R.id.supdesc);
         edit = findViewById(R.id.editsup);
         delete = findViewById(R.id.deletesup);
-
+        //get data sent from previous activity
         Intent intent = getIntent();
 
         String id = intent.getStringExtra("id").toString();
-        String name = intent.getStringExtra("addSupplier").toString();
+        String name = intent.getStringExtra("supplier").toString();
         String desc = intent.getStringExtra("description").toString();
-
+        //set UI components to imported data
         supid.setText(id);
         supn.setText(name);
         supd.setText(desc);
@@ -41,7 +42,7 @@ public class supplieredit extends AppCompatActivity {
         delete.setOnClickListener(v -> Delete());
 
     }
-
+    //delete supplier
     public void Delete()
     {
         try
@@ -59,7 +60,7 @@ public class supplieredit extends AppCompatActivity {
             Toast.makeText(this,"Record Deleted",Toast.LENGTH_LONG).show();
 
 
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
 
 
@@ -71,6 +72,7 @@ public class supplieredit extends AppCompatActivity {
         }
 
     }
+    //edit supplier
 
     public void Edit() {
         try {
@@ -78,22 +80,25 @@ public class supplieredit extends AppCompatActivity {
             String supplier = supn.getText().toString();
             String supplierdes = supd.getText().toString();
 
-
+            //open or create database
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
 
-
+            //update supplier
             String sql = "update supplier set supplier = ?,description=? where id= ?";
             SQLiteStatement statement = db.compileStatement(sql);
             statement.bindString(1, supplier);
             statement.bindString(2, supplierdes);
             statement.bindString(3,id);
             statement.execute();
+            //if succesful
             Toast.makeText(this, "Record Updated", Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
 
-        } catch (Exception ex) {
+        }
+        //if not successful
+        catch (Exception ex) {
             Toast.makeText(this, "Record Fail", Toast.LENGTH_LONG).show();
         }
 

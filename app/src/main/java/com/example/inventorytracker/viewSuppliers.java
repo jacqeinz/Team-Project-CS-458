@@ -36,7 +36,7 @@ public class viewSuppliers extends AppCompatActivity {
         Suppliers = findViewById(R.id.view);
         final Cursor c = db.rawQuery("select * from supplier", null);
         int id = c.getColumnIndex("id");
-        int supplier = c.getColumnIndex("addSupplier");
+        int supplier = c.getColumnIndex("supplier");
         int description = c.getColumnIndex("description");
 
         sups.clear();
@@ -45,19 +45,19 @@ public class viewSuppliers extends AppCompatActivity {
         arrayAdapterSup = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, sups);
         Suppliers.setAdapter(arrayAdapterSup);
 
-        final ArrayList<supplier> cat = new ArrayList<com.example.inventorytracker.supplier>();
+        final ArrayList<supplier> supps = new ArrayList<supplier>();
 
 
         if (c.moveToFirst()) {
             do {
 
                 supplier sup = new supplier();
-
+                sup.id = c.getString(id);
                 sup.supplier = c.getString(supplier);
                 sup.description = c.getString(description);
 
 
-                cat.add(sup);
+                supps.add(sup);
 
 
                 sups.add(c.getString(id) + " \t " + c.getString(supplier) + " \t " + c.getString(description));
@@ -72,10 +72,10 @@ public class viewSuppliers extends AppCompatActivity {
 
         Suppliers.setOnItemClickListener((parent, view, position, id1) -> {
 
-            supplier supp = cat.get(position);
-            Intent intent = new Intent(getApplicationContext(), supplieredit.class);
+            supplier supp = supps.get(position);
+            Intent intent = new Intent(this, supplieredit.class);
             intent.putExtra("id", supp.id);
-            intent.putExtra("addSupplier", supp.supplier);
+            intent.putExtra("supplier", supp.supplier);
             intent.putExtra("description", supp.description);
             startActivity(intent);
         });

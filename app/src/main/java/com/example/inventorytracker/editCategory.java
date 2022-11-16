@@ -16,11 +16,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class editCategory extends AppCompatActivity {
     //variables
     EditText cateID, cateName, cateDesc;
     Button edit, delete;
-    String id, cate, desc;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
