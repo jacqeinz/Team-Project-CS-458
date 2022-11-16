@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.192" />
+        app:layout_constraintVertical_bias="0.192" android:minHeight="48dp"android:textColorHint="#757575"android:importantForAutofill="no"/>
 
     <EditText
         android:id="@+id/lastName"
@@ -32,7 +32,7 @@
         app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33" />
+        app:layout_constraintVertical_bias="0.33" android:minHeight="48dp"android:textColorHint="#757575"android:autofillHints=""/>
 
     <EditText
         android:id="@+id/email"
@@ -40,13 +40,13 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter e-mail"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.451" />
+        app:layout_constraintVertical_bias="0.451" android:minHeight="48dp"android:textColorHint="#757575"android:importantForAutofill="no"/>
 
     <Button
         android:id="@+id/btnRegister"
