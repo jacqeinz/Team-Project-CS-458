@@ -47,7 +47,7 @@ public class viewSuppliers extends AppCompatActivity {
 
         final ArrayList<supplier> supps = new ArrayList<supplier>();
 
-
+        //lopp through rows and add to arraylist
         if (c.moveToFirst()) {
             do {
 

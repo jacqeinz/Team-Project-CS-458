@@ -35,6 +35,7 @@ public class viewCategories extends AppCompatActivity {
         arrayAdapterView = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, cates);
         lstCate.setAdapter(arrayAdapterView);
         final ArrayList<category> cat = new ArrayList<com.example.inventorytracker.category>();
+        //looping through rows and add to arraylist
         if (c.moveToFirst()) {
             do {
                 category cate = new category();
