@@ -11,14 +11,16 @@ import android.widget.Button;
 
 
 public class addInventoryOrder extends AppCompatActivity {
+
+    //assign IDs to variables
     //declare variable
-    EditText etOrder1;
-    EditText etOrder2;
-    EditText etOrder3;
-    EditText etOrder4;
-    EditText etOrder5;
-    EditText etOrder6;
-    Button button;
+    EditText etOrder1 = (EditText) findViewById(R.id.etProductID);
+    EditText etOrder2 = (EditText) findViewById(R.id.etProductName);;
+    EditText etOrder3 = (EditText) findViewById(R.id.etAmountOrdered);;
+    EditText etOrder4 = (EditText) findViewById(R.id.etProductCategory);;
+    EditText etOrder5 = (EditText) findViewById(R.id.etProductSupplier);;
+    EditText etOrder6 = (EditText) findViewById(R.id.etProductCost);;
+    Button button = (Button) findViewById(R.id.btnSubmit);;
 
 
 
@@ -27,13 +29,7 @@ public class addInventoryOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_inventory_order);
 
-        //assign IDs to variables
-        etOrder1 = (EditText) findViewById(R.id.etProductID);
-        etOrder2 = (EditText) findViewById(R.id.etProductName);
-        etOrder3 = (EditText) findViewById(R.id.etAmountOrdered);
-        etOrder4 = (EditText) findViewById(R.id.etProductCategory);
-        etOrder5 = (EditText) findViewById(R.id.etProductSupplier);
-        etOrder6 = (EditText) findViewById(R.id.etProductCost);
-        button = (Button) findViewById(R.id.btnSubmit);
+
+
     }
 }

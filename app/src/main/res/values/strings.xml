@@ -8,5 +8,20 @@
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string><string/><string/><string/><string/><string/><string/><string/>
+    <string name="login_failed">"Login failed"</string><string/><string/><string/><string/><string/><string/><string/><string/>
+    <string name="user_name">User name</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="add_user">Add User</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="enter_e_mail">Enter e-mail</string>
+    <string name="enter_amount_ordered">enter amount ordered</string>
+    <string name="enter_product_name">enter product name</string>
+    <string name="enter_product_id">enter product ID</string>
+    <string name="enter_product_category">enter product category</string>
+    <string name="enter_product_supplier">enter product supplier</string>
+    <string name="enter_product_cost">enter product cost</string>
+    <string name="submit">submit</string>
 </resources>

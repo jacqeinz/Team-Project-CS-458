@@ -44,18 +44,18 @@ public class login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View view) {
-           //     checkUsername();
+               // checkUsername();
             }
         });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //
+
             }
         });
 
-       // private void checkUsername() {
+        //private void checkUsername() {
             boolean isValid = true;
             if (isEmpty(username)){
                 username.setError("you must enter username");
