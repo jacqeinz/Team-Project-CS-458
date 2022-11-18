@@ -5,8 +5,6 @@ package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,70 +20,44 @@ public class login extends AppCompatActivity {
 
     EditText username;
     EditText password;
-    EditText repassword;
-    Button signup;
-    Button signin;
+    Button btnlogin;
     DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_add_user);
 
-        username = (EditText) findViewById(R.id.username);
-        password = (EditText) findViewById(R.id.password);
-        repassword = (EditText) findViewById(R.id.repassword);
-        signin = (Button)findViewById(R.id.btnsignin);
-        signup = (Button) findViewById(R.id.btnsignup);
+        //set values to variables
+        username = (EditText) findViewById(R.id.username1);
+        password = (EditText) findViewById(R.id.password1);
+        btnlogin = (Button) findViewById(R.id.btnsignin1);
         DB = new DBHelper(this);
 
-        signup.setOnClickListener(new View.OnClickListener() {
+        btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
-                String repass = repassword.getText().toString();
 
-                if(user.equals("") || pass.equals("Please enter all fields") || repass.equals(""))
-                    Toast.makeText(login.this, "", Toast.LENGTH_SHORT).show();
-                else {
-                    if(pass.equals(repass)){
-                        Boolean checkuser = DB.checkusername(user);
-                        if(checkuser == false){
-                            Boolean insert = DB.insertData(user, pass);
-                            if(insert == true){
-                                Toast.makeText(login.this, "Registered Successful", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
-                            }else{
-                                Toast.makeText(login.this, "Registration failed", Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-                        else{
-                            Toast.makeText(login.this, "User exists! please sign in", Toast.LENGTH_SHORT).show();
-                        }
+                if(user.equals("") || pass.equals(""))
+                    Toast.makeText(login.this, "Enter all fields", Toast.LENGTH_SHORT).show();
+                else{
+                    Boolean checkuserpass = DB.checkusernamepassword(user, pass);
+                    if(checkuserpass == true){
+                        Toast.makeText(login.this, "sign in success", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(intent);
                     }else{
-                        Toast.makeText(login.this, "password not matching", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(login.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                     }
+
                 }
-
-            }
-        });
-
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-
 
             }
         });
     }
 
 }
-
-
 

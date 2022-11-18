@@ -5,6 +5,8 @@ package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,44 +22,70 @@ public class addUser extends AppCompatActivity {
 
     EditText username;
     EditText password;
-    Button btnlogin;
+    EditText repassword;
+    Button signup;
+    Button signin;
     DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_user);
+        setContentView(R.layout.activity_login);
 
-        //set values to variables
-        username = (EditText) findViewById(R.id.username1);
-        password = (EditText) findViewById(R.id.password1);
-        btnlogin = (Button) findViewById(R.id.btnsignin1);
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
+        repassword = (EditText) findViewById(R.id.repassword);
+        signin = (Button)findViewById(R.id.btnsignin);
+        signup = (Button) findViewById(R.id.btnsignup);
         DB = new DBHelper(this);
 
-        btnlogin.setOnClickListener(new View.OnClickListener() {
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
+                String repass = repassword.getText().toString();
+
+                if(user.equals("") || pass.equals("Please enter all fields") || repass.equals(""))
+                    Toast.makeText(addUser.this, "", Toast.LENGTH_SHORT).show();
+                else {
+                    if(pass.equals(repass)){
+                        Boolean checkuser = DB.checkusername(user);
+                        if(checkuser == false){
+                            Boolean insert = DB.insertData(user, pass);
+                            if(insert == true){
+                                Toast.makeText(addUser.this, "Registered Successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                            }else{
+                                Toast.makeText(addUser.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                        else{
+                            Toast.makeText(addUser.this, "User exists! please sign in", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(addUser.this, "password not matching", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }
+        });
+
+        signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String user = username.getText().toString();
-                String pass = password.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), login.class);
+                startActivity(intent);
 
-                if(user.equals("") || pass.equals(""))
-                    Toast.makeText(addUser.this, "Enter all fields", Toast.LENGTH_SHORT).show();
-                else{
-                    Boolean checkuserpass = DB.checkusernamepassword(user, pass);
-                    if(checkuserpass == true){
-                        Toast.makeText(addUser.this, "sign in success", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(addUser.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
 
             }
         });
     }
 
 }
+
+
 
