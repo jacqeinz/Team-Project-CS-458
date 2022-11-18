@@ -5,6 +5,7 @@ package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -17,10 +18,10 @@ public class addUser extends AppCompatActivity {
 
     //declare variables
 
-    EditText firstName;
-    EditText lastName;
-    EditText email;
-    Button btnRegister;
+    EditText username;
+    EditText password;
+    Button btnlogin;
+    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,44 +29,35 @@ public class addUser extends AppCompatActivity {
         setContentView(R.layout.activity_add_user);
 
         //set values to variables
+        username = (EditText) findViewById(R.id.username1);
+        password = (EditText) findViewById(R.id.password1);
+        btnlogin = (Button) findViewById(R.id.btnsignin1);
+        DB = new DBHelper(this);
 
-        firstName = findViewById(R.id.firstName);
-        lastName = findViewById(R.id.lastName);
-        email = findViewById(R.id.email);
-        btnRegister = findViewById(R.id.btnRegister);
-
-        //onclick listener
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkDataEntered();
+
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
+
+                if(user.equals("") || pass.equals(""))
+                    Toast.makeText(addUser.this, "Enter all fields", Toast.LENGTH_SHORT).show();
+                else{
+                    Boolean checkuserpass = DB.checkusernamepassword(user, pass);
+                    if(checkuserpass == true){
+                        Toast.makeText(addUser.this, "sign in success", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(addUser.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
             }
         });
     }
-    //check email
-    boolean isEmail(EditText text){
-        CharSequence email = text.getText().toString();
-        return(!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
-    }
-
-    boolean isEmpty(EditText text){
-        CharSequence s = text.getText().toString();
-        return TextUtils.isEmpty(s);
-    }
-    //method to check user input
-    void checkDataEntered(){
-        if (isEmpty(firstName)){
-            Toast t = Toast.makeText(this, "You must enter a first name", Toast.LENGTH_SHORT);
-            t.show();
-        }
-
-        if(isEmpty(lastName)){
-            lastName.setError("Last name required");
-        }
-
-        if(isEmail(email) == false){
-            email.setError("Invalid email");
-        }
-    }
 
 }
+

@@ -14,6 +14,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class login extends AppCompatActivity {
 
@@ -21,75 +22,70 @@ public class login extends AppCompatActivity {
 
     EditText username;
     EditText password;
-    Button register;
-    Button login;
+    EditText repassword;
+    Button signup;
+    Button signin;
+    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        setupUI();
-        setupListeners();
-    }
-    //method to connect variables to with elements
-    private void setupUI(){
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        register = findViewById(R.id.register);
-        login = findViewById(R.id.login);
-    }
-    //login and register methods
-    private void setupListeners(){
-        login.setOnClickListener(new View.OnClickListener() {
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
+        repassword = (EditText) findViewById(R.id.repassword);
+        signin = (Button)findViewById(R.id.btnsignin);
+        signup = (Button) findViewById(R.id.btnsignup);
+        DB = new DBHelper(this);
+
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
-           public void onClick(View view) {
-               // checkUsername();
+            public void onClick(View view) {
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
+                String repass = repassword.getText().toString();
+
+                if(user.equals("") || pass.equals("Please enter all fields") || repass.equals(""))
+                    Toast.makeText(login.this, "", Toast.LENGTH_SHORT).show();
+                else {
+                    if(pass.equals(repass)){
+                        Boolean checkuser = DB.checkusername(user);
+                        if(checkuser == false){
+                            Boolean insert = DB.insertData(user, pass);
+                            if(insert == true){
+                                Toast.makeText(login.this, "Registered Successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                            }else{
+                                Toast.makeText(login.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                        else{
+                            Toast.makeText(login.this, "User exists! please sign in", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(login.this, "password not matching", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
             }
         });
 
-        register.setOnClickListener(new View.OnClickListener() {
+        signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+
+
             }
         });
-
-        //private void checkUsername() {
-            boolean isValid = true;
-            if (isEmpty(username)){
-                username.setError("you must enter username");
-                isValid = false;
-            }else{
-                if (!isEmail(username)){
-                    username.setError("enter valid email");
-                    isValid = false;
-                }
-            }
-
-            if(isEmpty(password)){
-                password.setError("must enter password to login");
-                isValid = false;
-            }else{
-                if(password.getText().toString().length() < 8){
-                    password.setError("Password must be at least 8 characters");
-                    isValid = false;
-                }
-            }
-
-        }
-
-
-    //isEmail method
-    boolean isEmail(EditText text){
-        CharSequence email = text.getText().toString();
-        return(!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
     }
-    //isEmpty method
-    boolean isEmpty(EditText text){
-        CharSequence s = text.getText().toString();
-        return TextUtils.isEmpty(s);
-    }
-
 
 }
+
+
+
