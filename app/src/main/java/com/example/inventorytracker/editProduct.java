@@ -47,7 +47,7 @@ public class editProduct extends AppCompatActivity {
         proprice = findViewById(R.id.proprice);
          edit = findViewById(R.id.edit);
         delete = findViewById(R.id.delete);
-
+        //get information from previos activity
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
         String pro = intent.getStringExtra("product");
@@ -56,7 +56,7 @@ public class editProduct extends AppCompatActivity {
         String supp = intent.getStringExtra("supplier");
         String qty = intent.getStringExtra("qty");
         String price = intent.getStringExtra("price");
-
+        //display information
         pid.setText(id);
         pname.setText(pro);
 
@@ -71,7 +71,7 @@ public class editProduct extends AppCompatActivity {
         arrayAdaptercat = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
         spinnercat.setAdapter(arrayAdaptercat);
 
-        final ArrayList<category> cates = new ArrayList<com.example.inventorytracker.category>();
+        final ArrayList<category> cates = new ArrayList<category>();
         if(c.moveToFirst()) {
             do {
                 category cate = new category();
@@ -87,12 +87,14 @@ public class editProduct extends AppCompatActivity {
         final Cursor b = db.rawQuery("select supplier from supplier",null);
         int supplier = b.getColumnIndex("supplier");
         sups.clear();
+        //setspinner to supplier
         arrayAdaptersup= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
         spinnersup.setAdapter(arrayAdaptersup);
-        final  ArrayList<supplier> suppliers = new ArrayList<com.example.inventorytracker.supplier>();
+        final  ArrayList<supplier> suppliers = new ArrayList<supplier>();
 
         if(b.moveToFirst()) {
             do {
+                //create an object of type supplier and add to supplier array
                 supplier sup = new supplier();
                 sup.supplier = b.getString(supplier);
                 suppliers.add(sup);
@@ -101,30 +103,24 @@ public class editProduct extends AppCompatActivity {
             arrayAdaptersup.notifyDataSetChanged();
 
         }
-
-
-
-
-        
         edit.setOnClickListener(v -> Edit());
 
 
         delete.setOnClickListener(v -> Delete());
 
-
     }
 
 
-
+    //delete supplier
     public void Delete()
     {
         try
-        {
+        {   //get id
             String id = pid.getText().toString();
 
             SQLiteDatabase db = openOrCreateDatabase("inventory",Context.MODE_PRIVATE,null);
 
-
+            //delete from database
             String sql = "delete from product where id = ?";
             SQLiteStatement statement = db.compileStatement(sql);
 
@@ -139,6 +135,7 @@ public class editProduct extends AppCompatActivity {
 
 
         }
+        //if deleting was successful
         catch (Exception ex)
         {
             Toast.makeText(this,"Record Deleting Failed",Toast.LENGTH_LONG).show();
@@ -149,21 +146,22 @@ public class editProduct extends AppCompatActivity {
     }
 
 
-
-
-
-
+    //edit product
     public void Edit() {
         try {
+            //get information from EditText
             String id = pid.getText().toString();
             String proname = pname.getText().toString();
             String category = spinnercat.getSelectedItem().toString();
             String supplier = spinnersup.getSelectedItem().toString();
             String qty = proqty.getText().toString();
             String price = proprice.getText().toString();
+            //access database
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+            //create rows
             String sql = "update product set proname = ?,category=?,supplier = ?,qty = ?,price = ? where id= ?";
             SQLiteStatement statement = db.compileStatement(sql);
+            //attach variables to statement and execute
             statement.bindString(1, proname);
             statement.bindString(2, category);
             statement.bindString(3, supplier);
@@ -171,11 +169,14 @@ public class editProduct extends AppCompatActivity {
             statement.bindString(5, price);
             statement.bindString(6, id);
             statement.execute();
+            //if successful
             Toast.makeText(this, "Record Updated", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
 
-        } catch (Exception ex) {
+        }
+        //if failed
+        catch (Exception ex) {
             Toast.makeText(this, "Updating Record Failed", Toast.LENGTH_LONG).show();
         }
 
