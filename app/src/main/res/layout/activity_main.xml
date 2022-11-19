@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button12"
+        android:id="@+id/addPro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToAddProduct"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.827" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/AddInv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToAddInventoryOrder"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.827" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/viewInv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToViewInventoryOrders"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.667" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/addSupplier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToAddSupplier"
@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.544" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/addCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToAddCategory"
@@ -72,7 +72,7 @@
         app:layout_constraintVertical_bias="0.667" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/viewCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToViewCategories"
@@ -85,7 +85,7 @@
         app:layout_constraintVertical_bias="0.544" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/viewSuppliers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToViewSuppliers"
@@ -98,7 +98,7 @@
         app:layout_constraintVertical_bias="0.322" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/viewInventory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToViewInventory"
@@ -111,7 +111,7 @@
         app:layout_constraintVertical_bias="0.42" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/addS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToAddSale"
@@ -124,7 +124,7 @@
         app:layout_constraintVertical_bias="0.43" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/viewSales"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToViewSales"
@@ -137,7 +137,7 @@
         app:layout_constraintVertical_bias="0.194" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/addUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToAddUser"
@@ -150,7 +150,7 @@
         app:layout_constraintVertical_bias="0.322" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/loginU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToLogin"
@@ -162,13 +162,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.216" />
 
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="3dp"
-        android:layout_height="92dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
 </androidx.constraintlayout.widget.ConstraintLayout>

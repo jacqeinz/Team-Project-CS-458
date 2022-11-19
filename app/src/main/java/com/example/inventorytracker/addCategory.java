@@ -32,6 +32,7 @@ public class addCategory extends AppCompatActivity {
 
         add.setOnClickListener(v -> insert());
     }
+    //insert category
     public void insert() {
         try {
             //extract values from input

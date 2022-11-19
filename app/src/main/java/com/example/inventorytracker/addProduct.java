@@ -50,10 +50,13 @@ public class addProduct extends AppCompatActivity {
         final Cursor c = db.rawQuery("select category from category",null);
         int category = c.getColumnIndex("category");
         cats.clear();
+        //attach array of cats to arrayAdapter
         arrayAdaptercat = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
+        //set spinner to what is in arrayAdapter
         spinnercat.setAdapter(arrayAdaptercat);
 
-        final  ArrayList<category> cates = new ArrayList<com.example.inventorytracker.category>();
+        final  ArrayList<category> cates = new ArrayList<category>();
+        //testing if there is an empty set
         if(c.moveToFirst()) {
             do {
                 category cate = new category();
@@ -69,7 +72,9 @@ public class addProduct extends AppCompatActivity {
         final Cursor b = db.rawQuery("select supplier from supplier",null);
         int supplier = b.getColumnIndex("supplier");
         sups.clear();
+        //bind array of suppliers to arrayAdapter
         arrayAdaptersup= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
+        //set spinner to what is in ArrayAdapter
         spinnersup.setAdapter(arrayAdaptersup);
         final  ArrayList<supplier> suppliers = new ArrayList<com.example.inventorytracker.supplier>();
 
@@ -88,17 +93,19 @@ public class addProduct extends AppCompatActivity {
 //add products
     public void insert() {
         try {
-            //extra variables
+            // variables
             String productname = name.getText().toString();
             String category = spinnercat.getSelectedItem().toString();
             String supplier = spinnersup.getSelectedItem().toString();
             String qty = proqty.getText().toString();
             String price = proprice.getText().toString();
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+            //create or open table and create rows
             db.execSQL("CREATE TABLE IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT,proname VARCHAR,category VARCHAR,supplier VARCHAR,qty VARCHAR,price VARCHAR)");
 
             String sql = "insert into product(proname,category,supplier,qty,price)values(?,?,?,?,?)";
             SQLiteStatement statement = db.compileStatement(sql);
+            //bind values to statement
             statement.bindString(1, productname);
             statement.bindString(2, category);
             statement.bindString(3, supplier);

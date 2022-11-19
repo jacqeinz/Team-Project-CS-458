@@ -12,30 +12,27 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
+
 
 public class MainActivity extends AppCompatActivity {
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String username = getSharedPreferences("userName", MODE_PRIVATE).getString("uname"," ");
-        TextView userName = findViewById(R.id.username);
-        userName.setText(username);
         if(!checkIfDataExists()) {
             createDatabases();
             createSalesDatabase();
             createCategoryDatabase();
             createSupplierDatabase();
+
+
         }
 
     }
     //main menu
-    public void goToLogin(View view ){
+    public void goToLogin(View view){
         Intent intent = new Intent(this, login.class);
         startActivity(intent);
     }

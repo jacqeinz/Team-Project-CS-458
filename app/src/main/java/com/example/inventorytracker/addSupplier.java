@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class addSupplier extends AppCompatActivity {
 
-
+    //declare UI components
     EditText sup,desc;
     Button add;
 
@@ -24,7 +24,7 @@ public class addSupplier extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier);
-
+        //connecct to UI components
         sup = findViewById(R.id.supID);
         desc = findViewById(R.id.supplierdesc);
 
@@ -33,12 +33,14 @@ public class addSupplier extends AppCompatActivity {
 
         add.setOnClickListener(v -> insert());
     }
+    //insert sale
     public void insert() {
         try {
+            //get input from user
             String supplier = sup.getText().toString();
             String description = desc.getText().toString();
 
-
+            //open or create database
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
             db.execSQL("CREATE TABLE IF NOT EXISTS supplier(id INTEGER PRIMARY KEY AUTOINCREMENT,supplier VARCHAR,description VARCHAR)");
 
