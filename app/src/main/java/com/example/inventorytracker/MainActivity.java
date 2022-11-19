@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
@@ -25,10 +26,12 @@ public class MainActivity extends AppCompatActivity {
         String username = getSharedPreferences("userName", MODE_PRIVATE).getString("uname"," ");
         TextView userName = findViewById(R.id.username);
         userName.setText(username);
-        createDatabases();
-        createSalesDatabase();
-        createCategoryDatabase();
-        createSupplierDatabase();
+        if(!checkIfDataExists()) {
+            createDatabases();
+            createSalesDatabase();
+            createCategoryDatabase();
+            createSupplierDatabase();
+        }
 
     }
     //main menu
@@ -80,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, addProduct.class);
         startActivity(intent);
     }
+    private boolean checkIfDataExists(){
+        SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table' AND name='product'", null);
+        boolean result = cursor.getCount() > 0;
+        db.close();
+        return result;
+
+    }
     private void createDatabases(){
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT,proname VARCHAR,category VARCHAR,supplier VARCHAR,qty VARCHAR,price VARCHAR)");
@@ -109,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         statement2.bindString(2, "Categorized by the color blue.");
         statement2.execute();
         db.execSQL("CREATE TABLE IF NOT EXISTS supplier(id INTEGER PRIMARY KEY AUTOINCREMENT,supplier VARCHAR,description VARCHAR)");
+        db.close();
 
     }
     private void createSupplierDatabase(){
@@ -124,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 "\n" +
                 "(732) 524-0400");
         statement3.execute();
+        db.close();
 
     }
     private void createSalesDatabase(){
@@ -138,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         statement4.bindString(4, "10.99");
         statement4.bindString(5, "21.98");
         statement4.execute();
+        db.close();
 
 
     }
