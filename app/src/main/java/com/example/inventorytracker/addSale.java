@@ -58,10 +58,10 @@ public class addSale extends AppCompatActivity {
     }
     public void calculateSale(){
        // calculate sale get qty and price
-        int qtysale = Integer.parseInt(proqty.getText().toString());
-        int pricepro =  Integer.parseInt(price.getText().toString());
+        Double qtysale = Double.parseDouble(proqty.getText().toString());
+        Double pricepro =  Double.parseDouble(price.getText().toString());
         //do math
-       int totalSale = qtysale * pricepro;
+       double totalSale = qtysale * pricepro;
        total.setText(String.valueOf(totalSale));
 
    }
