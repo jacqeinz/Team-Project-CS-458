@@ -46,12 +46,12 @@
         android:layout_marginBottom="31dp"
         android:ems="10"
         android:hint="@string/enter_amount_ordered"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="#757575"
         app:layout_constraintBottom_toTopOf="@+id/etProductCategory"
-        app:layout_constraintEnd_toEndOf="@+id/etProductCategory"
-        android:importantForAutofill="no" />
+        app:layout_constraintEnd_toEndOf="@+id/etProductCategory" />
 
     <EditText
         android:id="@+id/etProductCategory"

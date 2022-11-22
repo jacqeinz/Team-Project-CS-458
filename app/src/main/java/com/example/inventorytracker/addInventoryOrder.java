@@ -53,4 +53,9 @@ public class addInventoryOrder extends AppCompatActivity {
 
 
     }
+    public void viewInventoryOrder(){
+
+    }
+
+
 }

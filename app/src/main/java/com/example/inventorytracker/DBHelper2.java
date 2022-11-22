@@ -4,11 +4,15 @@ package com.example.inventorytracker;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBHelper2 extends SQLiteOpenHelper {
     private static final String PRODUCT_ID = "productID";
@@ -49,6 +53,38 @@ public class DBHelper2 extends SQLiteOpenHelper {
         value.put(PRODUCT_CATEGORY, inventory.getProductCategory());
         value.put(PRODUCT_SUPPLIER, inventory.getProductSupplier());
         value.put(PRODUCT_COST, inventory.getProductCost());
+
+        //insert data in row
+        db.insert(DB2NAME, null, value );
+        db.close();
+
+    }
+
+    //for list view
+    public List<Inventory> getAllOrders(){
+        List<Inventory> orderList = new ArrayList<>();
+        //query to select all
+        String selectQuery = "SELECT * FROM " + DB2NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        //looping and adding to list
+        if(cursor.moveToFirst()){
+            do{
+                Inventory order = new Inventory();
+                order.setProductID(Integer.parseInt(cursor.getString(0)));
+                order.setProductName(cursor.getString(1));
+                order.setAmountOrdered(cursor.getString(2));
+                order.setProductCategory(cursor.getString(3));
+                order.setProductSupplier(cursor.getString(4));
+                order.setProductCost(Double.parseDouble(cursor.getString(5)));
+
+                //adding order to list
+                orderList.add(order);
+            }while (cursor.moveToNext());
+        }
+        return orderList;
 
     }
 }
