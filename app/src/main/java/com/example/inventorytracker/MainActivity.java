@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         statement.bindString(1, "band-aids");
         statement.bindString(2, "blue");
         statement.bindString(3, "Johnson & Johnson");
-        statement.bindString(4, "12");
+        statement.bindString(4, "20");
         statement.bindString(5, "10.99");
         statement.execute();
         db.execSQL("CREATE TABLE IF NOT EXISTS category(id INTEGER PRIMARY KEY AUTOINCREMENT,category VARCHAR,description VARCHAR)");

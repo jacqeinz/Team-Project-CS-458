@@ -58,10 +58,10 @@ public class addSale extends AppCompatActivity {
     }
     public void calculateSale(){
        // calculate sale get qty and price
-        int qtysale = Integer.parseInt(proqty.getText().toString());
-        int pricepro =  Integer.parseInt(price.getText().toString());
+        Double qtysale = Double.parseDouble(proqty.getText().toString());
+        Double pricepro =  Double.parseDouble(price.getText().toString());
         //do math
-       int totalSale = qtysale * pricepro;
+       double totalSale = qtysale * pricepro;
        total.setText(String.valueOf(totalSale));
 
    }
@@ -83,8 +83,9 @@ public class addSale extends AppCompatActivity {
             final Cursor c = db.rawQuery("select * from product where id = '"+id+"' ",null);
             //get quantity of that products
             int qty = c.getColumnIndex("qty");
-
+            //create object of type products
             final  ArrayList<products> products1 = new ArrayList<products>();
+            //loop looking for product
             if(c.moveToFirst())
             {
                 do{
@@ -92,10 +93,10 @@ public class addSale extends AppCompatActivity {
                     products products = new products();
                     //set qty
                     products.qty= c.getString(qty);
-
+                    //add products to array
                     products1.add(products);
 
-
+                    //get old quantity before sale
                     int oldqty = Integer.parseInt(c.getString(qty));
 
                     //compare how much is being sold to how much is in stock
@@ -103,7 +104,7 @@ public class addSale extends AppCompatActivity {
                     {
                         //if there is not enough in stock
                         Toast.makeText(addSale.this,String.valueOf( oldqty),Toast.LENGTH_LONG).show();
-                        Toast.makeText(this,"Qty is Not Enough",Toast.LENGTH_LONG).show();
+                        Toast.makeText(this,"Quantity is Not Enough",Toast.LENGTH_LONG).show();
 
                         proqty.setText("");
 
