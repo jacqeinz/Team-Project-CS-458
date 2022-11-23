@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 
 public class viewSuppliers extends AppCompatActivity {
-
+    //list varialbes
     ListView Suppliers;
     ArrayList<String> sups = new ArrayList<String>();
     ArrayAdapter arrayAdapterSup;
@@ -30,21 +30,24 @@ public class viewSuppliers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_suppliers2);
 
-
+        //open or create database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
-
+        //link UI
         Suppliers = findViewById(R.id.view);
+        //make cursor to loop
         final Cursor c = db.rawQuery("select * from supplier", null);
+        //get columnindex of suppliers
         int id = c.getColumnIndex("id");
         int supplier = c.getColumnIndex("supplier");
         int description = c.getColumnIndex("description");
 
         sups.clear();
 
-
+        //set arrayadapter to arraylist sups
         arrayAdapterSup = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, sups);
+        //set listview to arrayadapter
         Suppliers.setAdapter(arrayAdapterSup);
-
+        //create object
         final ArrayList<supplier> supps = new ArrayList<supplier>();
 
         //lopp through rows and add to arraylist
@@ -69,9 +72,9 @@ public class viewSuppliers extends AppCompatActivity {
 
 
         }
-
+        //if any suppliers is clicked
         Suppliers.setOnItemClickListener((parent, view, position, id1) -> {
-
+            //make object and send data to supplieredit
             supplier supp = supps.get(position);
             Intent intent = new Intent(this, supplieredit.class);
             intent.putExtra("id", supp.id);
