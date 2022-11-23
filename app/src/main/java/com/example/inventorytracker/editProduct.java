@@ -63,20 +63,32 @@ public class editProduct extends AppCompatActivity {
         proqty.setText(qty);
         proprice.setText(price);
         //open or create database
-        SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+
         //category spinner
+        //make cursor so you can loop through categories/rows
+        //send a raw sql call to sqlite
+        SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+        //create cursor
         final Cursor c = db.rawQuery("select category from category",null);
+        //get index and store in category
         int category = c.getColumnIndex("category");
         cats.clear();
+        // store cats in arrayadapter
         arrayAdaptercat = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
+        //set spinner to arrayadapter
         spinnercat.setAdapter(arrayAdaptercat);
-
+        //array of categories
         final ArrayList<category> cates = new ArrayList<category>();
+        //loop through cateogires, start at the beginning
         if(c.moveToFirst()) {
             do {
+                //create object of type category
                 category cate = new category();
+                //pass retrieved cateogory to object
                 cate.category = c.getString(category);
+                //add object to arraylist
                 cates.add(cate);
+                //add category to cats
                 cats.add(c.getString(category) );
 
             } while (c.moveToNext());
@@ -84,6 +96,8 @@ public class editProduct extends AppCompatActivity {
 
         }
         //Supplier spinner
+        //make cursor so you can loop through categories/rows
+        //send a raw sql call to sqlite
         final Cursor b = db.rawQuery("select supplier from supplier",null);
         int supplier = b.getColumnIndex("supplier");
         sups.clear();

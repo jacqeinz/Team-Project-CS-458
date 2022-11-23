@@ -79,21 +79,21 @@ public class addSale extends AppCompatActivity {
             //open or create database
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
             String id = pid.getText().toString();
-            //look for products with that ID
+            //create cursor to loop through products
             final Cursor c = db.rawQuery("select * from product where id = '"+id+"' ",null);
-            //get quantity of that products
+            //get index and store in qty
             int qty = c.getColumnIndex("qty");
             //create object of type products
             final  ArrayList<products> products1 = new ArrayList<products>();
-            //loop looking for product
+            //loop looking for product with cursor
             if(c.moveToFirst())
             {
                 do{
                     //create object
                     products products = new products();
-                    //set qty
+                    //get qty and store in object
                     products.qty= c.getString(qty);
-                    //add products to array
+                    //add object to array
                     products1.add(products);
 
                     //get old quantity before sale
@@ -113,10 +113,11 @@ public class addSale extends AppCompatActivity {
 
                         //create or open database
                         db.execSQL("CREATE TABLE IF NOT EXISTS sales(proid VARCHAR,proname VARCHAR,qty VARCHAR, price VARCHAR,total VARCHAR)");
+                        //create rows
                         String sql = "insert into sales(proid,proname,qty,price,total)values(?,?,?,?,?)";
                         //create statement
                         SQLiteStatement statement = db.compileStatement(sql);
-                        //attach to statement
+                        //add to databse by binding
                         statement.bindString(1, proid);
                         statement.bindString(2, proname);
                         statement.bindLong(3, qty);
@@ -125,7 +126,9 @@ public class addSale extends AppCompatActivity {
                         statement.execute();
                         //update products after sale
                         String sql1 = "update product set qty = qty - ? where id = ? ";
+                        //create sql statement to update
                         SQLiteStatement statement1 = db.compileStatement(sql1);
+                        //update qty
                         statement1.bindLong(1, qtysale);
                         statement1.bindString(2, proid);
                         statement1.execute();

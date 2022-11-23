@@ -46,7 +46,7 @@ public class addCategory extends AppCompatActivity {
             //create rows
             String sql = "insert into category(category,description)values(?,?)";
             SQLiteStatement statement = db.compileStatement(sql);
-            //bind Strings to statement that was created then execute
+            //insert into database
             statement.bindString(1, category);
             statement.bindString(2, description);
             statement.execute();
