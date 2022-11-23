@@ -74,6 +74,7 @@ public class addProduct extends AppCompatActivity {
             arrayAdaptercat.notifyDataSetChanged();
 
         }
+        
         //Supplier spinner
         //make cursor so you can loop through suppliers/rows
         //send a raw sql call to sqlite
@@ -85,6 +86,7 @@ public class addProduct extends AppCompatActivity {
         arrayAdaptersup= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
         //set spinner to what is in ArrayAdapter
         spinnersup.setAdapter(arrayAdaptersup);
+
         final  ArrayList<supplier> suppliers = new ArrayList<supplier>();
         //loop through categories start at the top using cursor
         if(b.moveToFirst()) {
@@ -106,6 +108,7 @@ public class addProduct extends AppCompatActivity {
 //add products
     public void insert() {
         try {
+        
             // extract values from UI
             String productname = name.getText().toString();
             String category = spinnercat.getSelectedItem().toString();
