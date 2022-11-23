@@ -69,6 +69,7 @@ public class addProduct extends AppCompatActivity {
 
         }
         //Supplier spinner
+
         final Cursor b = db.rawQuery("select supplier from supplier",null);
         int supplier = b.getColumnIndex("supplier");
         sups.clear();
@@ -77,7 +78,7 @@ public class addProduct extends AppCompatActivity {
         //set spinner to what is in ArrayAdapter
         spinnersup.setAdapter(arrayAdaptersup);
         final  ArrayList<supplier> suppliers = new ArrayList<com.example.inventorytracker.supplier>();
-
+        //loop through suppliers start at the beginning
         if(b.moveToFirst()) {
             do {
                 supplier sup = new supplier();
@@ -93,14 +94,14 @@ public class addProduct extends AppCompatActivity {
 //add products
     public void insert() {
         try {
-            // variables
+            // get text from variables
             String productname = name.getText().toString();
             String category = spinnercat.getSelectedItem().toString();
             String supplier = spinnersup.getSelectedItem().toString();
             String qty = proqty.getText().toString();
             String price = proprice.getText().toString();
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
-            //create or open table and create rows
+            //create or open table
             db.execSQL("CREATE TABLE IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT,proname VARCHAR,category VARCHAR,supplier VARCHAR,qty VARCHAR,price VARCHAR)");
 
             String sql = "insert into product(proname,category,supplier,qty,price)values(?,?,?,?,?)";
