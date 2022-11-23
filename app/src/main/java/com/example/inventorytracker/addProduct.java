@@ -44,6 +44,8 @@ public class addProduct extends AppCompatActivity {
         proprice = findViewById(R.id.proprice);
         add = findViewById(R.id.addbtn);
         add.setOnClickListener(v -> insert());
+
+
         //open or create database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
         //category spinner
@@ -100,6 +102,7 @@ public class addProduct extends AppCompatActivity {
                 //add  selected supplier to supplier arraylist
                 sups.add(b.getString(supplier));
             } while (b.moveToNext());
+            //tell arrayadapter to refresh
             arrayAdaptersup.notifyDataSetChanged();
 
         }
@@ -119,8 +122,9 @@ public class addProduct extends AppCompatActivity {
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
             //create or open table
             db.execSQL("CREATE TABLE IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT,proname VARCHAR,category VARCHAR,supplier VARCHAR,qty VARCHAR,price VARCHAR)");
-            //create rows
+            //create columns
             String sql = "insert into product(proname,category,supplier,qty,price)values(?,?,?,?,?)";
+            //create statement to add to database
             SQLiteStatement statement = db.compileStatement(sql);
             //insert into database by binding
             statement.bindString(1, productname);

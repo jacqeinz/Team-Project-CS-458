@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         viewSales.setOnClickListener(v -> goToViewSales());
         addUser.setOnClickListener(v -> goToAddUser());
         loginU.setOnClickListener(v -> goToLogin());
-
+        //run functions to check is databases exist
         if(!checkIfDataExists()) {
             createDatabases();
             createSalesDatabase();
@@ -138,9 +138,11 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
         //create table
         db.execSQL("CREATE TABLE IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT,proname VARCHAR,category VARCHAR,supplier VARCHAR,qty VARCHAR,price VARCHAR)");
-        //add new product
+        //create rows
         String sql = "insert into product(proname,category,supplier,qty,price)values(?,?,?,?,?)";
+        //create statement to insert
         SQLiteStatement statement = db.compileStatement(sql);
+        //bind dummy data to statement
         statement.bindString(1, "band-aids");
         statement.bindString(2, "blue");
         statement.bindString(3, "Johnson & Johnson");
@@ -158,9 +160,11 @@ public class MainActivity extends AppCompatActivity {
     private void createCategoryDatabase(){
         //open or create database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
-
+        //create columns
         String sql2 = "insert into category(category,description)values(?,?)";
+        //create statement to insert categories
         SQLiteStatement statement2 = db.compileStatement(sql2);
+        //bind dummy data to statement to add
         statement2.bindString(1, "blue");
         statement2.bindString(2, "Categorized by the color blue.");
         statement2.execute();
@@ -175,9 +179,11 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
         //create table
         db.execSQL("CREATE TABLE IF NOT EXISTS supplier(id INTEGER PRIMARY KEY AUTOINCREMENT,supplier VARCHAR,description VARCHAR)");
-        //add new supplier
+        //create columns
         String sql3 = "insert into supplier(supplier,description)values(?,?)";
+        //create statement to add to database
         SQLiteStatement statement3 = db.compileStatement(sql3);
+        //bind dummy data to statemnt to add
         statement3.bindString(1, "Johnson & Johnson");
         statement3.bindString(2, "One Johnson & Johnson Plaza\n" +
                 "\n" +
@@ -194,9 +200,11 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
         //create tables
         db.execSQL("CREATE TABLE IF NOT EXISTS sales(proid VARCHAR,proname VARCHAR,qty VARCHAR,price VARCHAR,total VARCHAR)");
-        //add new sales
+        //create columns
         String sql4 = "insert into sales(proid,proname,qty,price,total)values(?,?,?,?,?)";
+        //create statment to attach dummy data to
         SQLiteStatement statement4 = db.compileStatement(sql4);
+        //execute to add to database
         statement4.bindString(1, "1");
         statement4.bindString(2, "band-aids");
         statement4.bindLong(3, 10);

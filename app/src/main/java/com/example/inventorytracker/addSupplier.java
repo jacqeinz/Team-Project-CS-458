@@ -27,7 +27,6 @@ public class addSupplier extends AppCompatActivity {
         //connecct to UI components
         sup = findViewById(R.id.supID);
         desc = findViewById(R.id.supplierdesc);
-
         add = findViewById(R.id.edit);
 
 
