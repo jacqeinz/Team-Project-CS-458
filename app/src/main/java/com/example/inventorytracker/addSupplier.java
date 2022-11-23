@@ -42,17 +42,19 @@ public class addSupplier extends AppCompatActivity {
 
             //open or create database
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+            //create table
             db.execSQL("CREATE TABLE IF NOT EXISTS supplier(id INTEGER PRIMARY KEY AUTOINCREMENT,supplier VARCHAR,description VARCHAR)");
-
+            //create rows
             String sql = "insert into supplier(supplier,description)values(?,?)";
+            //create statement to add to database
             SQLiteStatement statement = db.compileStatement(sql);
+            //add to database
             statement.bindString(1, supplier);
             statement.bindString(2, description);
-
             statement.execute();
+            //if adding supplier successful
             Toast.makeText(this, "Supplier Added", Toast.LENGTH_LONG).show();
-
-
+            //empty fields
             sup.setText("");
             desc.setText("");
 
@@ -60,6 +62,7 @@ public class addSupplier extends AppCompatActivity {
 
 
         } catch (Exception ex) {
+            //if failed
             Toast.makeText(this, "Adding Record Failed", Toast.LENGTH_LONG).show();
         }
 
