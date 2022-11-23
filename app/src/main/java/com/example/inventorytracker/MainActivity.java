@@ -11,7 +11,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -19,14 +18,39 @@ import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
+    //declare variables
     TextView MainTitle;
-    Button addPro, AddInv, addSuppplier, addCategory, viewCat, viewSuppliers, viewInventory, addS, viewSales, addUser, loginU;
+    Button addPro, AddInv, addSuppplier, addCategory, viewCategories, viewSuppliers, viewInventory, addS, viewSales, addUser, loginU;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //connect UI components
         setContentView(R.layout.activity_main);
         MainTitle = findViewById(R.id.MainTitle);
+        addPro = findViewById(R.id.addPro);
+        AddInv = findViewById(R.id.AddInv);
+        addSuppplier = findViewById(R.id.addSupplier);
+        addCategory = findViewById(R.id.addCategory);
+        viewCategories = findViewById(R.id.viewCategories);
+        viewSuppliers = findViewById(R.id.viewSuppliers);
+        viewInventory = findViewById(R.id.viewInventory);
+        addS = findViewById(R.id.addS);
+        viewSales = findViewById(R.id.viewSales);
+        addUser = findViewById(R.id.addUser);
+        loginU = findViewById(R.id.loginU);
+        //connect buttons to functions
+        addPro.setOnClickListener(v -> goToAddProduct());
+        AddInv.setOnClickListener(v ->  goToAddInventoryOrder());
+        addSuppplier.setOnClickListener(v -> goToAddSupplier());
+        addCategory.setOnClickListener(v -> goToAddCategory());
+        viewCategories.setOnClickListener(v -> goToViewCategories());
+        viewSuppliers.setOnClickListener(v -> goToViewSuppliers());
+        viewInventory.setOnClickListener(v -> goToViewInventory());
+        addS.setOnClickListener(v -> goToAddSale());
+        viewSales.setOnClickListener(v -> goToViewSales());
+        addUser.setOnClickListener(v -> goToAddUser());
+        loginU.setOnClickListener(v -> goToLogin());
 
         if(!checkIfDataExists()) {
             createDatabases();
@@ -39,54 +63,67 @@ public class MainActivity extends AppCompatActivity {
 
     }
     //main menu
-    public void goToLogin(View view){
+    //go to login
+    public void goToLogin(){
         Intent intent = new Intent(this, login.class);
         startActivity(intent);
     }
-    public void goToAddUser(View view){
+    //Add user
+    public void goToAddUser(){
         Intent intent = new Intent(this, addUser.class);
         startActivity(intent);
     }
-    public void goToViewSales (View view){
+    //view list of sales
+    public void goToViewSales (){
         Intent intent = new Intent(this, viewSales.class);
         startActivity(intent);
     }
-    public void goToAddSale (View view){
+    //add sale
+    public void goToAddSale (){
         Intent intent = new Intent(this, addSale.class);
         startActivity(intent);
     }
-    public void goToViewInventory(View view){
+    //view total inventory of products
+    public void goToViewInventory(){
         Intent intent = new Intent(this, viewproduct.class);
         startActivity(intent);
     }
-    public void goToViewSuppliers(View view){
+    //view suppliers
+    public void goToViewSuppliers(){
         Intent intent = new Intent(this, viewSuppliers.class);
         startActivity(intent);
     }
-    public void goToViewCategories(View view){
+    //view all categories
+    public void goToViewCategories(){
         Intent intent = new Intent(this, viewCategories.class);
         startActivity(intent);
     }
-    public void goToAddCategory(View view){
+    //add category to list
+    public void goToAddCategory(){
         Intent intent = new Intent(this, addCategory.class);
         startActivity(intent);
     }
-    public void goToAddSupplier(View view){
+    //add supplier
+    public void goToAddSupplier(){
         Intent intent = new Intent(this, addSupplier.class);
         startActivity(intent);
     }
-    public void goToAddInventoryOrder(View view){
+    //make inventory order
+    public void goToAddInventoryOrder(){
         Intent intent = new Intent(this, addInventoryOrder.class);
         startActivity(intent);
     }
-    public void goToViewInventoryOrders(View view){
+    //view histry of inventory orders
+    public void goToViewInventoryOrders(){
         Intent intent = new Intent(this, viewInventoryOrders.class);
         startActivity(intent);
     }
-    public void goToAddProduct(View view){
+    //add product
+    public void goToAddProduct(){
         Intent intent = new Intent(this, addProduct.class);
         startActivity(intent);
     }
+    //check if databases exist already
     private boolean checkIfDataExists(){
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
         Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table' AND name='product'", null);
@@ -95,10 +132,13 @@ public class MainActivity extends AppCompatActivity {
         return result;
 
     }
+    //create databse and add dummy data
     private void createDatabases(){
+        //create or open database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+        //create table
         db.execSQL("CREATE TABLE IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT,proname VARCHAR,category VARCHAR,supplier VARCHAR,qty VARCHAR,price VARCHAR)");
-        //select from category to check if anything is here. if so, return
+        //add new product
         String sql = "insert into product(proname,category,supplier,qty,price)values(?,?,?,?,?)";
         SQLiteStatement statement = db.compileStatement(sql);
         statement.bindString(1, "band-aids");
@@ -114,8 +154,9 @@ public class MainActivity extends AppCompatActivity {
 
         db.close();
     }
+    //create databse and add dummy data for
     private void createCategoryDatabase(){
-        //select from category to check if anything is here. if so, return
+        //open or create database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
 
         String sql2 = "insert into category(category,description)values(?,?)";
@@ -123,14 +164,18 @@ public class MainActivity extends AppCompatActivity {
         statement2.bindString(1, "blue");
         statement2.bindString(2, "Categorized by the color blue.");
         statement2.execute();
+        //create table
         db.execSQL("CREATE TABLE IF NOT EXISTS supplier(id INTEGER PRIMARY KEY AUTOINCREMENT,supplier VARCHAR,description VARCHAR)");
         db.close();
 
     }
+    //create databse and add dummy data for suppliers
     private void createSupplierDatabase(){
-        //select from addSupplier to check if anything is here. if so, return
+
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+        //create table
         db.execSQL("CREATE TABLE IF NOT EXISTS supplier(id INTEGER PRIMARY KEY AUTOINCREMENT,supplier VARCHAR,description VARCHAR)");
+        //add new supplier
         String sql3 = "insert into supplier(supplier,description)values(?,?)";
         SQLiteStatement statement3 = db.compileStatement(sql3);
         statement3.bindString(1, "Johnson & Johnson");
@@ -143,10 +188,13 @@ public class MainActivity extends AppCompatActivity {
         db.close();
 
     }
+    //create databse and add dummy data for sales
     private void createSalesDatabase(){
-        //select from sales to check if anything is there
+        //open or create database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+        //create tables
         db.execSQL("CREATE TABLE IF NOT EXISTS sales(proid VARCHAR,proname VARCHAR,qty VARCHAR,price VARCHAR,total VARCHAR)");
+        //add new sales
         String sql4 = "insert into sales(proid,proname,qty,price,total)values(?,?,?,?,?)";
         SQLiteStatement statement4 = db.compileStatement(sql4);
         statement4.bindString(1, "1");
