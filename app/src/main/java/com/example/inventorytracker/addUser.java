@@ -46,8 +46,8 @@ public class addUser extends AppCompatActivity {
                 String pass = password.getText().toString();
                 String repass = repassword.getText().toString();
 
-                if(user.equals("") || pass.equals("Please enter all fields") || repass.equals(""))
-                    Toast.makeText(addUser.this, "", Toast.LENGTH_SHORT).show();
+                if(user.equals("") || repass.equals(""))
+                    Toast.makeText(addUser.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
                 else {
                     if(pass.equals(repass)){
                         Boolean checkuser = DB.checkusername(user);

@@ -4,17 +4,13 @@ package com.example.inventorytracker;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.view.View;
 
-import androidx.annotation.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DBHelper2 extends SQLiteOpenHelper {
+    private static final String TABLE_NAME = "myinventoryorder";
     private static final String PRODUCT_ID = "productID";
     private static final String PRODUCT_NAME = "productName";
     private static final String AMOUNT_ORDERED = "amountOrdered";
@@ -22,69 +18,50 @@ public class DBHelper2 extends SQLiteOpenHelper {
     private static final String PRODUCT_SUPPLIER = "productSupplier";
     private static final String PRODUCT_COST = "productCost";
 
-    public static final String DB2NAME = "Inventory.db";
+    public static final String DB2NAME = "InventoryOrder.db";
+    //constructor
     public DBHelper2(Context context) {
 
-        super(context, "inventory.db", null, 1);
+        super(context, DB2NAME, null, 1);
     }
 //create the table
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase db) {
+        String query = "CREATE TABLE " + TABLE_NAME + " (" + PRODUCT_ID +
+                " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_NAME + " TEXT,"
+                + AMOUNT_ORDERED + " TEXT," + PRODUCT_CATEGORY + " TEXT," + PRODUCT_SUPPLIER
+                + " TEXT," + PRODUCT_COST + " TEXT)";
 
-        sqLiteDatabase.execSQL("create Table inventoryOrder(PRODUCTID TEXT primary key, PRODUCTNAME TEXT, amountOrdered TEXT, productCategory TEXT, productSupplier TEXT, productCost TEXT)");
-
+        //execute query
+        db.execSQL(query);
     }
 //upgrade
+    //check if table exists
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("drop table if exists intventoryorder");
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL("drop table if exists " + TABLE_NAME);
 
         //create table again
-        onCreate(sqLiteDatabase);
+        onCreate(db);
 
     }
 
-    void addInvOrder(Inventory inventory){
+    public void addInvOrder(String productName, String amountOrdered, String productCategory, String productSupplier, String productCost){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues value = new ContentValues();
-        value.put(PRODUCT_ID, inventory.getProductID());
-        value.put(PRODUCT_NAME, inventory.getProductName());
-        value.put(PRODUCT_CATEGORY, inventory.getProductCategory());
-        value.put(PRODUCT_SUPPLIER, inventory.getProductSupplier());
-        value.put(PRODUCT_COST, inventory.getProductCost());
+
+        value.put(PRODUCT_NAME, productName);
+        value.put(AMOUNT_ORDERED, amountOrdered);
+        value.put(PRODUCT_CATEGORY, productCategory);
+        value.put(PRODUCT_SUPPLIER, productSupplier);
+        value.put(PRODUCT_COST, productCost);
 
         //insert data in row
-        db.insert(DB2NAME, null, value );
+        //close database after adding data
+        db.insert(TABLE_NAME, null, value );
         db.close();
 
     }
 
-    //for list view
-    public List<Inventory> getAllOrders(){
-        List<Inventory> orderList = new ArrayList<>();
-        //query to select all
-        String selectQuery = "SELECT * FROM " + DB2NAME;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        //looping and adding to list
-        if(cursor.moveToFirst()){
-            do{
-                Inventory order = new Inventory();
-                order.setProductID(Integer.parseInt(cursor.getString(0)));
-                order.setProductName(cursor.getString(1));
-                order.setAmountOrdered(cursor.getString(2));
-                order.setProductCategory(cursor.getString(3));
-                order.setProductSupplier(cursor.getString(4));
-                order.setProductCost(Double.parseDouble(cursor.getString(5)));
-
-                //adding order to list
-                orderList.add(order);
-            }while (cursor.moveToNext());
-        }
-        return orderList;
-
-    }
 }
