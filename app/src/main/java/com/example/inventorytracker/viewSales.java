@@ -42,12 +42,13 @@ public class viewSales extends AppCompatActivity {
         //make object of type products
         final  ArrayList<products> products1 = new ArrayList<products>();
 
-        //loop through rows and add to arraylist
+        //loop through rows
         if(c.moveToFirst())
         {
             do{
-                //get information and attach to object of type products
+                //make object
                 products pro = new products();
+                //set object values
                 pro.id = c.getString(proid);
                 pro.product = c.getString(proname);
                 pro.qty= c.getString(qty);
@@ -55,11 +56,14 @@ public class viewSales extends AppCompatActivity {
                 pro.total = c.getString(total);
                 //add to array
                 products1.add(pro);
+                //add to sales arraylist
                 sales.add(c.getString(proid) + " \t " + c.getString(proname) + " \t "  + c.getString(qty)   + " \t " + c.getString(price) + " \t " + c.getString(total));
 
             }
             while(c.moveToNext());
+            //tell arrrayadapter to refresh
             arrayAdapterSale.notifyDataSetChanged();
+            //force listview to rebuild
             viewSales.invalidateViews();
         }
 

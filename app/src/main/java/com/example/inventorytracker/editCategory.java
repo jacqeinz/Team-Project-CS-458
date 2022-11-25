@@ -60,8 +60,9 @@ public class editCategory extends AppCompatActivity {
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
             //update category with new information
             String sql = "update category set category = ?,description=? where id= ?";
+            //create statment to update
             SQLiteStatement statement = db.compileStatement(sql);
-            //bind new information to statement
+            //bind new information to statement to add to database
             statement.bindString(1, category);
             statement.bindString(2, catdes);
             statement.bindString(3,id);

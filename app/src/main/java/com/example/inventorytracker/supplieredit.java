@@ -23,6 +23,7 @@ public class supplieredit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplieredit);
+        //link UI compoenents
         supid = findViewById(R.id.supplierid);
         supn = findViewById(R.id.supname);
         supd  = findViewById(R.id.supdesc);
@@ -47,25 +48,27 @@ public class supplieredit extends AppCompatActivity {
     {
         try
         {
+            //get id from editText
             String id = supid.getText().toString();
-
+            //create or open database
             SQLiteDatabase db = openOrCreateDatabase("inventory",Context.MODE_PRIVATE,null);
 
-
+            //use delete from and link to statement
             String sql = "delete from supplier where id = ?";
             SQLiteStatement statement = db.compileStatement(sql);
-
+            //delete that ID
             statement.bindString(1,id);
             statement.execute();
             Toast.makeText(this,"Record Deleted",Toast.LENGTH_LONG).show();
 
-
+            //go to mainactivity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
 
 
 
         }
+        //if deleting failed
         catch (Exception ex)
         {
             Toast.makeText(this,"Record Fail",Toast.LENGTH_LONG).show();
@@ -76,6 +79,7 @@ public class supplieredit extends AppCompatActivity {
 
     public void Edit() {
         try {
+            //get input from editText
             String id = supid.getText().toString();
             String supplier = supn.getText().toString();
             String supplierdes = supd.getText().toString();
@@ -83,9 +87,12 @@ public class supplieredit extends AppCompatActivity {
             //open or create database
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
 
-            //update supplier
+            //use update
             String sql = "update supplier set supplier = ?,description=? where id= ?";
+            //create statement to update supplier
             SQLiteStatement statement = db.compileStatement(sql);
+            //bind to statement and execute
+            //update
             statement.bindString(1, supplier);
             statement.bindString(2, supplierdes);
             statement.bindString(3,id);

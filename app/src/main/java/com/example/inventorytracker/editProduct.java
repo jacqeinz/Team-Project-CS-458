@@ -63,43 +63,64 @@ public class editProduct extends AppCompatActivity {
         proqty.setText(qty);
         proprice.setText(price);
         //open or create database
-        SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+
         //category spinner
+        //make cursor so you can loop through categories/rows
+        //send a raw sql call to sqlite
+        SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+        //create cursor
         final Cursor c = db.rawQuery("select category from category",null);
+        //get index and store in category
         int category = c.getColumnIndex("category");
         cats.clear();
+        // store cats in arrayadapter
         arrayAdaptercat = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
+        //set spinner to arrayadapter
         spinnercat.setAdapter(arrayAdaptercat);
-
+        //array of categories
         final ArrayList<category> cates = new ArrayList<category>();
+        //loop through cateogires, start at the beginning
         if(c.moveToFirst()) {
             do {
+                //create object of type category
                 category cate = new category();
+                //pass retrieved cateogory to object
                 cate.category = c.getString(category);
+                //add object to arraylist
                 cates.add(cate);
+                //add category to cats
                 cats.add(c.getString(category) );
 
             } while (c.moveToNext());
+            //tell arrayadapter to refresh
             arrayAdaptercat.notifyDataSetChanged();
 
         }
         //Supplier spinner
+        //make cursor so you can loop through categories/rows
+        //send a raw sql call to sqlite
         final Cursor b = db.rawQuery("select supplier from supplier",null);
+        //get index and store in supplier
         int supplier = b.getColumnIndex("supplier");
         sups.clear();
-        //setspinner to supplier
+        // set arrayadapter to sups
         arrayAdaptersup= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
+        //set spinner to arrayadapter
         spinnersup.setAdapter(arrayAdaptersup);
         final  ArrayList<supplier> suppliers = new ArrayList<supplier>();
-
+        //loop through suppliers
         if(b.moveToFirst()) {
             do {
                 //create an object of type supplier and add to supplier array
                 supplier sup = new supplier();
+                //set supplier obtained with cursor to object
                 sup.supplier = b.getString(supplier);
+                //add object to suppliers
                 suppliers.add(sup);
+                //add supplier to supplier arraylist
                 sups.add(b.getString(supplier) );
             } while (b.moveToNext());
+            //tell arrayadapter to refresh
             arrayAdaptersup.notifyDataSetChanged();
 
         }
@@ -117,13 +138,14 @@ public class editProduct extends AppCompatActivity {
         try
         {   //get id
             String id = pid.getText().toString();
-
+            //open or creat database
             SQLiteDatabase db = openOrCreateDatabase("inventory",Context.MODE_PRIVATE,null);
 
-            //delete from database
+            //store selected product into sql
             String sql = "delete from product where id = ?";
+            //create statement with sql to delete
             SQLiteStatement statement = db.compileStatement(sql);
-
+            //pass on id to delete
             statement.bindString(1,id);
             statement.execute();
             Toast.makeText(this,"Record Deleted",Toast.LENGTH_LONG).show();
@@ -158,8 +180,9 @@ public class editProduct extends AppCompatActivity {
             String price = proprice.getText().toString();
             //access database
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
-            //create rows
+            //use update
             String sql = "update product set proname = ?,category=?,supplier = ?,qty = ?,price = ? where id= ?";
+            //create statement to update
             SQLiteStatement statement = db.compileStatement(sql);
             //attach variables to statement and execute
             statement.bindString(1, proname);

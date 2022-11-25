@@ -44,47 +44,65 @@ public class addProduct extends AppCompatActivity {
         proprice = findViewById(R.id.proprice);
         add = findViewById(R.id.addbtn);
         add.setOnClickListener(v -> insert());
+
+
         //open or create database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
         //category spinner
+        //make cursor so you can loop through categories/rows
+        //send a raw sql call to sqlite
         final Cursor c = db.rawQuery("select category from category",null);
+        //returns index and store it in category
         int category = c.getColumnIndex("category");
         cats.clear();
         //attach array of cats to arrayAdapter
         arrayAdaptercat = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,cats);
         //set spinner to what is in arrayAdapter
         spinnercat.setAdapter(arrayAdaptercat);
-
+        //make arraylist to store cateogories
         final  ArrayList<category> cates = new ArrayList<category>();
-        //testing if there is an empty set
+        //loop through categories start at the top using cursor
         if(c.moveToFirst()) {
             do {
+                //create cateogry object
                 category cate = new category();
                 cate.category = c.getString(category);
+                //add to arraylist
                 cates.add(cate);
+                //add  selected category to category arraylist
                 cats.add(c.getString(category) );
 
             } while (c.moveToNext());
             arrayAdaptercat.notifyDataSetChanged();
 
         }
+        
         //Supplier spinner
+        //make cursor so you can loop through suppliers/rows
+        //send a raw sql call to sqlite
         final Cursor b = db.rawQuery("select supplier from supplier",null);
+        //get columnn index of supplier and strore in supplier
         int supplier = b.getColumnIndex("supplier");
         sups.clear();
         //bind array of suppliers to arrayAdapter
         arrayAdaptersup= new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sups);
         //set spinner to what is in ArrayAdapter
         spinnersup.setAdapter(arrayAdaptersup);
-        final  ArrayList<supplier> suppliers = new ArrayList<com.example.inventorytracker.supplier>();
 
+        final  ArrayList<supplier> suppliers = new ArrayList<supplier>();
+        //loop through categories start at the top using cursor
         if(b.moveToFirst()) {
             do {
+                //create supplier object
                 supplier sup = new supplier();
+                //store supplier in sup supplier attribute
                 sup.supplier = b.getString(supplier);
+                //add to arraylist
                 suppliers.add(sup);
-                sups.add(b.getString(supplier) );
+                //add  selected supplier to supplier arraylist
+                sups.add(b.getString(supplier));
             } while (b.moveToNext());
+            //tell arrayadapter to refresh
             arrayAdaptersup.notifyDataSetChanged();
 
         }
@@ -93,19 +111,22 @@ public class addProduct extends AppCompatActivity {
 //add products
     public void insert() {
         try {
-            // variables
+        
+            // extract values from UI
             String productname = name.getText().toString();
             String category = spinnercat.getSelectedItem().toString();
             String supplier = spinnersup.getSelectedItem().toString();
             String qty = proqty.getText().toString();
             String price = proprice.getText().toString();
+            //open or create datanse
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
-            //create or open table and create rows
+            //create or open table
             db.execSQL("CREATE TABLE IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT,proname VARCHAR,category VARCHAR,supplier VARCHAR,qty VARCHAR,price VARCHAR)");
-
+            //create columns
             String sql = "insert into product(proname,category,supplier,qty,price)values(?,?,?,?,?)";
+            //create statement to add to database
             SQLiteStatement statement = db.compileStatement(sql);
-            //bind values to statement
+            //insert into database by binding
             statement.bindString(1, productname);
             statement.bindString(2, category);
             statement.bindString(3, supplier);
@@ -113,12 +134,14 @@ public class addProduct extends AppCompatActivity {
             statement.bindString(5, price);
             statement.execute();
             Toast.makeText(this, "Product added", Toast.LENGTH_LONG).show();
+            //empty fields
             name.setText("");
             proqty.setText("");
             proprice.setText("");
             name.requestFocus();
 
         } catch (Exception ex) {
+            //if adding record fails
             Toast.makeText(this, "Adding Record Failed", Toast.LENGTH_LONG).show();
         }
     }
