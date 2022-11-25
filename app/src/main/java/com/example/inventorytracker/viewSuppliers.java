@@ -34,12 +34,15 @@ public class viewSuppliers extends AppCompatActivity {
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
         //link UI
         Suppliers = findViewById(R.id.view);
-        //make cursor to loop
+        //make cursor to loop and rawQuery to search
         final Cursor c = db.rawQuery("select * from supplier", null);
-        //get columnindex of suppliers
+        //get column index
         int id = c.getColumnIndex("id");
         int supplier = c.getColumnIndex("supplier");
         int description = c.getColumnIndex("description");
+        int email = c.getColumnIndex("email");
+        int phoneNumber = c.getColumnIndex("phoneNumber");
+        int address = c.getColumnIndex("address");
 
         sups.clear();
 
@@ -53,26 +56,31 @@ public class viewSuppliers extends AppCompatActivity {
         //lopp through rows and add to arraylist
         if (c.moveToFirst()) {
             do {
-
+                //create object and attach values
                 supplier sup = new supplier();
                 sup.id = c.getString(id);
                 sup.supplier = c.getString(supplier);
                 sup.description = c.getString(description);
+                sup.email = c.getString(email);
+                sup.phoneNumber = c.getString(phoneNumber);
+                sup.address = c.getString(address);
 
 
                 supps.add(sup);
 
-
-                sups.add(c.getString(id) + " \t " + c.getString(supplier) + " \t " + c.getString(description));
+                //add to supplier arraylist
+                sups.add(c.getString(id) + " \t " + c.getString(supplier) + " \t " + c.getString(description) + " \t " + c.getString(email) + " \t " + c.getString(phoneNumber) + " \t " + c.getString(address));
 
 
             } while (c.moveToNext());
+            //tell arrayAdapter to refresh
             arrayAdapterSup.notifyDataSetChanged();
+            //force listview to rebuild
             Suppliers.invalidateViews();
 
 
         }
-        //if any suppliers is clicked
+        //if any suppliers are clicked
         Suppliers.setOnItemClickListener((parent, view, position, id1) -> {
             //make object and send data to supplieredit
             supplier supp = supps.get(position);
@@ -80,6 +88,9 @@ public class viewSuppliers extends AppCompatActivity {
             intent.putExtra("id", supp.id);
             intent.putExtra("supplier", supp.supplier);
             intent.putExtra("description", supp.description);
+            intent.putExtra("email", supp.email);
+            intent.putExtra("phoneNumber", supp.phoneNumber);
+            intent.putExtra("address", supp.address);
             startActivity(intent);
         });
     }
