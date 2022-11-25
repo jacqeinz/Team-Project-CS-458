@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         statement.bindString(4, "20");
         statement.bindString(5, "10.99");
         statement.execute();
-        db.execSQL("CREATE TABLE IF NOT EXISTS category(id INTEGER PRIMARY KEY AUTOINCREMENT,category VARCHAR,description VARCHAR)");
+
 
 
 
@@ -160,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
     private void createCategoryDatabase(){
         //open or create database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS category(id INTEGER PRIMARY KEY AUTOINCREMENT,category VARCHAR,description VARCHAR)");
         //create columns
         String sql2 = "insert into category(category,description)values(?,?)";
         //create statement to insert categories
@@ -168,8 +169,6 @@ public class MainActivity extends AppCompatActivity {
         statement2.bindString(1, "blue");
         statement2.bindString(2, "Categorized by the color blue.");
         statement2.execute();
-        //create table
-        db.execSQL("CREATE TABLE IF NOT EXISTS supplier(id INTEGER PRIMARY KEY AUTOINCREMENT,supplier VARCHAR,description VARCHAR)");
         db.close();
 
     }
@@ -178,18 +177,17 @@ public class MainActivity extends AppCompatActivity {
 
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
         //create table
-        db.execSQL("CREATE TABLE IF NOT EXISTS supplier(id INTEGER PRIMARY KEY AUTOINCREMENT,supplier VARCHAR,description VARCHAR)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS supplier(id INTEGER PRIMARY KEY AUTOINCREMENT,supplier VARCHAR,description VARCHAR,email VARCHAR,phoneNumber VARCHAR,address VARCHAR)");
         //create columns
-        String sql3 = "insert into supplier(supplier,description)values(?,?)";
+        String sql3 = "insert into supplier(supplier,description,email,phoneNumber, address)values(?,?,?,?,?)";
         //create statement to add to database
         SQLiteStatement statement3 = db.compileStatement(sql3);
         //bind dummy data to statemnt to add
         statement3.bindString(1, "Johnson & Johnson");
-        statement3.bindString(2, "One Johnson & Johnson Plaza\n" +
-                "\n" +
-                "New Brunswick, New Jersey 08933\n" +
-                "\n" +
-                "(732) 524-0400");
+        statement3.bindString(2, "Medical and aide company");
+        statement3.bindString(3, "johnsonj@johnson.com");
+        statement3.bindString(4, "534-6745-2058");
+        statement3.bindString(5, "101 South Main Road Dallas Texas, 79936");
         statement3.execute();
         db.close();
 
