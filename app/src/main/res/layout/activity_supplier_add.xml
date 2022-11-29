@@ -14,6 +14,7 @@
         android:hint="Address"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.925"
@@ -29,6 +30,7 @@
         android:hint="Phone Numer"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.93"
@@ -43,12 +45,13 @@
         android:fontFamily="serif"
         android:text="Address: "
         android:textColor="#286391"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.689" />
+        app:layout_constraintVertical_bias="0.688" />
 
     <TextView
         android:id="@+id/lblnumber"
@@ -57,12 +60,13 @@
         android:fontFamily="serif"
         android:text="Phone number: "
         android:textColor="#286391"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.582" />
+        app:layout_constraintVertical_bias="0.587" />
 
     <TextView
         android:id="@+id/lblemail"
@@ -71,12 +75,13 @@
         android:fontFamily="serif"
         android:text="Email: "
         android:textColor="#286391"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.471" />
 
     <EditText
         android:id="@+id/eMail"
@@ -86,6 +91,7 @@
         android:hint="Enter Email"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.925"
@@ -113,6 +119,7 @@
         android:hint="Supplier Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.92"
@@ -133,7 +140,8 @@
         app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.799" />
+        app:layout_constraintVertical_bias="0.799"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/edit"
@@ -141,6 +149,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="serif"
         android:text="Add supplier"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.456"
@@ -155,6 +164,7 @@
         android:fontFamily="serif"
         android:text="Supplier Name:"
         android:textColor="#286391"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
@@ -171,10 +181,11 @@
         android:textColor="#286391"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79" />
+        app:layout_constraintVertical_bias="0.792"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textView16"
