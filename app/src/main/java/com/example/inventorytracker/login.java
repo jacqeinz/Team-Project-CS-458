@@ -5,8 +5,6 @@ package com.example.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,6 +12,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class login extends AppCompatActivity {
 
@@ -21,75 +20,44 @@ public class login extends AppCompatActivity {
 
     EditText username;
     EditText password;
-    Button register;
-    Button login;
+    Button btnlogin;
+    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_add_user);
 
-        setupUI();
-        setupListeners();
-    }
-    //method to connect variables to with elements
-    private void setupUI(){
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        register = findViewById(R.id.register);
-        login = findViewById(R.id.login);
-    }
-    //login and register methods
-    private void setupListeners(){
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-           public void onClick(View view) {
-           //     checkUsername();
-            }
-        });
+        //set values to variables
+        username = (EditText) findViewById(R.id.username1);
+        password = (EditText) findViewById(R.id.password1);
+        btnlogin = (Button) findViewById(R.id.btnsignin1);
+        DB = new DBHelper(this);
 
-        register.setOnClickListener(new View.OnClickListener() {
+        btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //
+
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
+
+                if(user.equals("") || pass.equals(""))
+                    Toast.makeText(login.this, "Enter all fields", Toast.LENGTH_SHORT).show();
+                else{
+                    Boolean checkuserpass = DB.checkusernamepassword(user, pass);
+                    if(checkuserpass == true){
+                        Toast.makeText(login.this, "sign in success", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(login.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
             }
         });
-
-       // private void checkUsername() {
-            boolean isValid = true;
-            if (isEmpty(username)){
-                username.setError("you must enter username");
-                isValid = false;
-            }else{
-                if (!isEmail(username)){
-                    username.setError("enter valid email");
-                    isValid = false;
-                }
-            }
-
-            if(isEmpty(password)){
-                password.setError("must enter password to login");
-                isValid = false;
-            }else{
-                if(password.getText().toString().length() < 8){
-                    password.setError("Password must be at least 8 characters");
-                    isValid = false;
-                }
-            }
-
-        }
-
-
-    //isEmail method
-    boolean isEmail(EditText text){
-        CharSequence email = text.getText().toString();
-        return(!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
     }
-    //isEmpty method
-    boolean isEmpty(EditText text){
-        CharSequence s = text.getText().toString();
-        return TextUtils.isEmpty(s);
-    }
-
 
 }
+
