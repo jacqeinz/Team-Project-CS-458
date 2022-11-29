@@ -9,5 +9,8 @@ public class supplier extends AppCompatActivity {
     String id;
     String supplier;
     String description;
+    String email;
+    String phoneNumber;
+    String address;
 
 }

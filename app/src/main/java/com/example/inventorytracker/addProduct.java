@@ -73,6 +73,7 @@ public class addProduct extends AppCompatActivity {
                 cats.add(c.getString(category) );
 
             } while (c.moveToNext());
+            //refresh arrayadapter
             arrayAdaptercat.notifyDataSetChanged();
 
         }

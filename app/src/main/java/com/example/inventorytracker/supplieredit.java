@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class supplieredit extends AppCompatActivity {
     //variables
-    EditText supid, supn, supd;
+    EditText supid, supn, supd, emails, phone, add;
     Button edit, delete;
 
     @Override
@@ -25,20 +25,33 @@ public class supplieredit extends AppCompatActivity {
         setContentView(R.layout.activity_supplieredit);
         //link UI compoenents
         supid = findViewById(R.id.supplierid);
-        supn = findViewById(R.id.supname);
+        supn = findViewById(R.id.supn);
         supd  = findViewById(R.id.supdesc);
+        emails = findViewById(R.id.emailE);
+        phone = findViewById(R.id.phoneNumberE);
+        add = findViewById(R.id.addressE);
         edit = findViewById(R.id.editsup);
         delete = findViewById(R.id.deletesup);
+
+
         //get data sent from previous activity
         Intent intent = getIntent();
 
-        String id = intent.getStringExtra("id").toString();
-        String name = intent.getStringExtra("supplier").toString();
-        String desc = intent.getStringExtra("description").toString();
+        String id = intent.getStringExtra("id");
+        String name = intent.getStringExtra("supplier");
+        String desc = intent.getStringExtra("description");
+        String em = intent.getStringExtra("email");
+        String number = intent.getStringExtra("phoneNumber");
+        String addr = intent.getStringExtra("address");
+
         //set UI components to imported data
         supid.setText(id);
         supn.setText(name);
         supd.setText(desc);
+        emails.setText(em);
+        phone.setText(number);
+        add.setText(addr);
+        //set buttons to functions
         edit.setOnClickListener(v -> Edit());
         delete.setOnClickListener(v -> Delete());
 
@@ -82,25 +95,31 @@ public class supplieredit extends AppCompatActivity {
             //get input from editText
             String id = supid.getText().toString();
             String supplier = supn.getText().toString();
-            String supplierdes = supd.getText().toString();
+            String description = supd.getText().toString();
+            String email = emails.getText().toString();
+            String phoneNumber = phone.getText().toString();
+            String address = add.getText().toString();
 
             //open or create database
             SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
 
             //use update
-            String sql = "update supplier set supplier = ?,description=? where id= ?";
+            String sql = "update supplier set supplier = ?,description=?,email = ?,phoneNumber= ?,address = ? where id= ?";
             //create statement to update supplier
             SQLiteStatement statement = db.compileStatement(sql);
             //bind to statement and execute
             //update
             statement.bindString(1, supplier);
-            statement.bindString(2, supplierdes);
-            statement.bindString(3,id);
+            statement.bindString(2, description);
+            statement.bindString(3, email);
+            statement.bindString(4,phoneNumber);
+            statement.bindString(5, address);
+            statement.bindString(6, id);
             statement.execute();
             //if succesful
             Toast.makeText(this, "Record Updated", Toast.LENGTH_LONG).show();
 
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(this , MainActivity.class);
             startActivity(intent);
 
         }
