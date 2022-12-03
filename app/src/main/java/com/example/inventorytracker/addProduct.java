@@ -20,7 +20,17 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
+/**
+ * <h1>Add Product to Inventory</h1>
+ * The addProduct activity takes in a product name,
+ * category, supplier, price, and quantity and it is
+ * added to the database of the inventory.
+ * <p>
+ *
+ * @author Jacqueline chavez
+ * @version 1.0
+ * @since   Fall 2022
+ */
 public class addProduct extends AppCompatActivity {
     //declare componenets, variables
     private Spinner spinnercat;
@@ -109,7 +119,12 @@ public class addProduct extends AppCompatActivity {
         }
 
     }
-//add products
+    /**
+     * This is the insert method which adds a product to the inventory to the database.
+     * @return Nothing.
+     * @exception Exception ex. On return error.
+     * @see Exception ex
+     */
     public void insert() {
         try {
         
