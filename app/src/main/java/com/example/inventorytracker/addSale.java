@@ -140,7 +140,7 @@ public class addSale extends AppCompatActivity {
                         //add to databse by binding
                         statement.bindString(1, proid);
                         statement.bindString(2, proname);
-                        statement.bindLong(3, qty);
+                        statement.bindLong(3, qtysale);
                         statement.bindString(4, pricepro);
                         statement.bindString(5, totalsale);
                         statement.execute();
