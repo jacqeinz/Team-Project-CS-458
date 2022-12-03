@@ -92,7 +92,7 @@ public class editCategory extends AppCompatActivity {
         }
     }
     /**
-     * This is the edit method which takes in user input and deletes
+     * This is the delete method which takes in user input and deletes
      * a selected category and saves to the dabatase.
      * @return Nothing.
      * @exception Exception ex On return error.
