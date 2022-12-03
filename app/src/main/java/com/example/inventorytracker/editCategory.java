@@ -17,7 +17,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-
+/**
+ * <h1>Edit Category</h1>
+ * The editCategory activity takes in an ID, name, description
+ * and edits or deletes the selected category.
+ * <p>
+ *
+ * @author Jacqueline chavez
+ * @version 1.0
+ * @since   Fall 2022
+ */
 public class editCategory extends AppCompatActivity {
     //variables
     EditText cateID, cateName, cateDesc;
@@ -49,7 +58,13 @@ public class editCategory extends AppCompatActivity {
         edit.setOnClickListener(v -> Edit());
     }
 
-    //to edit a category
+    /**
+     * This is the edit method which takes in user input and edits
+     * a category and saves it to the dabatase.
+     * @return Nothing.
+     * @exception Exception ex On return error.
+     * @see Exception ex
+     */
     public void Edit() {
         try {
             //get information for category
@@ -76,7 +91,13 @@ public class editCategory extends AppCompatActivity {
             Toast.makeText(this, "Editing Record Failed", Toast.LENGTH_LONG).show();
         }
     }
-    //to delete category
+    /**
+     * This is the edit method which takes in user input and deletes
+     * a selected category and saves to the dabatase.
+     * @return Nothing.
+     * @exception Exception ex On return error.
+     * @see Exception ex
+     */
     public void Delete()
     {
         try

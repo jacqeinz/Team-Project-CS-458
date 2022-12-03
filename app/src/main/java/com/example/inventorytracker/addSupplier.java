@@ -11,7 +11,17 @@ import android.database.sqlite.SQLiteStatement;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+/**
+ * <h1>Add Supplier to Inventory</h1>
+ * The addSupplier activity takes in a supplier name,
+ * description, email, phone number and address and then
+ * added to the database of the inventory.
+ * <p>
+ *
+ * @author Jacqueline chavez
+ * @version 1.0
+ * @since   Fall 2022
+ */
 public class addSupplier extends AppCompatActivity {
 
     //declare UI components
@@ -34,7 +44,13 @@ public class addSupplier extends AppCompatActivity {
 
         add.setOnClickListener(v -> insert());
     }
-    //insert sale
+    /**
+     * This is the insert method which takes in user input and adds
+     * a Supplier to the inventory.
+     * @return Nothing.
+     * @exception Exception ex On return error.
+     * @see Exception ex
+     */
     public void insert() {
         try {
             //get input from user
