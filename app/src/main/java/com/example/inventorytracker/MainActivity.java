@@ -13,10 +13,15 @@ import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-
-
-
-
+/**
+ * <h1>Main Activity</h1>
+ * The MainActivity serves to navigate through the menu
+ * <p>
+ *
+ * @author Jacqueline chavez
+ * @version 1.0
+ * @since   Fall 2022
+ */
 public class MainActivity extends AppCompatActivity {
     //declare variables
     TextView MainTitle;
@@ -64,31 +69,67 @@ public class MainActivity extends AppCompatActivity {
     }
     //main menu
     //go to login
+    /**
+     * This is the goToLogin method which takes the user to the Login
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToLogin(){
         Intent intent = new Intent(this, login.class);
         startActivity(intent);
     }
     //Add user
+    /**
+     * This is the goToAddUser method which takes the user to the addUser
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToAddUser(){
         Intent intent = new Intent(this, addUser.class);
         startActivity(intent);
     }
     //view list of sales
+    /**
+     * This is the goToviewSales method which takes the user to the viewSales
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToViewSales (){
         Intent intent = new Intent(this, viewSales.class);
         startActivity(intent);
     }
     //add sale
+    /**
+     * This is the goToAddSale method which takes the user to the addSale
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToAddSale (){
         Intent intent = new Intent(this, addSale.class);
         startActivity(intent);
     }
     //view total inventory of products
+    /**
+     * This is the goToViewIventory method which takes the user to the viewInventory
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToViewInventory(){
         Intent intent = new Intent(this, viewproduct.class);
         startActivity(intent);
     }
     //view suppliers
+    /**
+     * This is the goToViewSuppliers method which takes the user to the addSale
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToViewSuppliers(){
         Intent intent = new Intent(this, viewSuppliers.class);
         startActivity(intent);
