@@ -13,7 +13,17 @@ import android.database.sqlite.SQLiteStatement;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+/**
+ * <h1>Supplier Edit</h1>
+ * This activity takes in supplier ID, name, and description and adds it to the database
+ * The this is the supplier class where data is received from viewSuppliers.class
+ * in order to edit or delete suppliers
+ * <p>
+ *
+ * @author Jacqueline chavez
+ * @version 1.0
+ * @since   Fall 2022
+ */
 public class supplieredit extends AppCompatActivity {
     //variables
     EditText supid, supn, supd, emails, phone, add;
@@ -57,6 +67,15 @@ public class supplieredit extends AppCompatActivity {
 
     }
     //delete supplier
+    /**
+     * This is the delete method that takes in user input
+     * and deleted the selected supplier
+     * @param
+     * @return Nothing.
+     * @exception Exception ex On return error.
+     * @see Exception ex
+     */
+
     public void Delete()
     {
         try
@@ -89,6 +108,14 @@ public class supplieredit extends AppCompatActivity {
 
     }
     //edit supplier
+    /**
+     * This is the edit method which takes in user input
+     * and edits the desired supplier.
+     * @param
+     * @return Nothing.
+     * @exception Exception ex On return error.
+     * @see Exception ex
+     */
 
     public void Edit() {
         try {

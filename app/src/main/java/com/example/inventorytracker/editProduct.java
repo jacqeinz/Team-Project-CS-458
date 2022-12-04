@@ -23,6 +23,7 @@ import android.widget.Toast;
  * The editProduct activity takes in an ID, name, category,
  * supplier, quantity, and price
  * and edits or deletes the selected product.
+ * This activity gets data passed from viewproduct.class
  * <p>
  *
  * @author Jacqueline chavez
