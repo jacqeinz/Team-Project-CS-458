@@ -21,6 +21,8 @@ import java.util.ArrayList;
  * <h1>Edit Category</h1>
  * The editCategory activity takes in an ID, name, description
  * and edits or deletes the selected category.
+ * This activity takes information passed from viewCategories to
+ * delete or edit categories.
  * <p>
  *
  * @author Jacqueline chavez

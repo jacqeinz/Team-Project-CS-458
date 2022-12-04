@@ -12,7 +12,16 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
-
+/**
+ * <h1>View Categories</h1>
+ * This activity takes in the database of categories
+ * and displays it
+ * <p>
+ *
+ * @author Jacqueline chavez
+ * @version 1.0
+ * @since   Fall 2022
+ */
 public class viewCategories extends AppCompatActivity {
     //list variables
     ListView lstCate;

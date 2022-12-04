@@ -7,7 +7,7 @@ package com.example.inventorytracker;
 import androidx.appcompat.app.AppCompatActivity;
 /**
  * <h1>Category</h1>
- * Category class
+ * Category class defined.
  * <p>
  *
  * @author Jacqueline chavez

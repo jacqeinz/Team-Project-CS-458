@@ -12,7 +12,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
-
+/**
+ * <h1>View Sales</h1>
+ * This activity takes in the database of sales
+ * and displays it
+ * <p>
+ *
+ * @author Jacqueline chavez
+ * @version 1.0
+ * @since   Fall 2022
+ */
 public class viewSales extends AppCompatActivity {
     //varialbes
     ListView viewSales;

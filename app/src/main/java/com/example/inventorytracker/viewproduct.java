@@ -13,7 +13,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-
+/**
+ * <h1>View Product</h1>
+ * This activity takes in the database of the inventory
+ * and displays it
+ * <p>
+ *
+ * @author Jacqueline chavez
+ * @version 1.0
+ * @since   Fall 2022
+ */
 public class viewproduct extends AppCompatActivity {
     //list variables
     ListView lstPro;
