@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/addPro"
-        android:layout_width="179dp"
-        android:layout_height="60dp"
+        android:layout_width="165dp"
+        android:layout_height="66dp"
         android:fontFamily="serif"
         android:text="Add Product"
         android:textAlignment="center"
@@ -26,15 +26,14 @@
         android:layout_width="191dp"
         android:layout_height="60dp"
         android:fontFamily="serif"
-        android:text="Add Inventory Orders"
+        android:text="Add Inventory Orders/ View"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.755" />
+        app:layout_constraintVertical_bias="0.874" />
 
     <Button
         android:id="@+id/viewInv"
@@ -53,23 +52,23 @@
 
     <Button
         android:id="@+id/addSupplier"
-        android:layout_width="158dp"
-        android:layout_height="57dp"
+        android:layout_width="174dp"
+        android:layout_height="66dp"
         android:fontFamily="serif"
         android:text="Add supplier"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintVertical_bias="0.759" />
 
     <Button
         android:id="@+id/addCategory"
-        android:layout_width="155dp"
-        android:layout_height="55dp"
+        android:layout_width="164dp"
+        android:layout_height="57dp"
         android:fontFamily="serif"
         android:text="Add Category"
         android:textAlignment="center"
@@ -83,7 +82,7 @@
 
     <Button
         android:id="@+id/viewSuppliers"
-        android:layout_width="161dp"
+        android:layout_width="175dp"
         android:layout_height="65dp"
         android:fontFamily="serif"
         android:text="View Suppliers"
@@ -91,15 +90,15 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.878" />
+        app:layout_constraintVertical_bias="0.764" />
 
     <Button
         android:id="@+id/viewInventory"
-        android:layout_width="184dp"
-        android:layout_height="62dp"
+        android:layout_width="168dp"
+        android:layout_height="67dp"
         android:fontFamily="serif"
         android:text="View Inventory"
         android:textAlignment="center"
@@ -109,12 +108,12 @@
         app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.633" />
+        app:layout_constraintVertical_bias="0.636" />
 
     <Button
         android:id="@+id/addS"
-        android:layout_width="160dp"
-        android:layout_height="59dp"
+        android:layout_width="172dp"
+        android:layout_height="63dp"
         android:fontFamily="serif"
         android:text="Add Sale"
         android:textAlignment="center"
@@ -128,7 +127,7 @@
 
     <Button
         android:id="@+id/viewSales"
-        android:layout_width="158dp"
+        android:layout_width="168dp"
         android:layout_height="64dp"
         android:fontFamily="serif"
         android:text="View Sales"
@@ -143,8 +142,8 @@
 
     <Button
         android:id="@+id/addUser"
-        android:layout_width="174dp"
-        android:layout_height="60dp"
+        android:layout_width="165dp"
+        android:layout_height="69dp"
         android:fontFamily="serif"
         android:text="Add User"
         android:textAlignment="center"
@@ -158,8 +157,8 @@
 
     <Button
         android:id="@+id/loginU"
-        android:layout_width="173dp"
-        android:layout_height="56dp"
+        android:layout_width="164dp"
+        android:layout_height="58dp"
         android:fontFamily="serif"
         android:text="Login"
         android:textAlignment="center"
@@ -180,23 +179,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintVertical_bias="0.004"
         app:srcCompat="@drawable/pinkbg" />
 
     <Button
         android:id="@+id/viewCategories"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
+        android:layout_width="170dp"
+        android:layout_height="62dp"
         android:fontFamily="serif"
         android:text="View Categories"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintHorizontal_bias="0.928"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintVertical_bias="0.634" />
 
     <TextView
         android:id="@+id/MainTitle"
