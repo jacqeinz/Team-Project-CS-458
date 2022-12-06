@@ -89,7 +89,7 @@
         android:ems="10"
         android:fontFamily="serif"
         android:hint="Price"
-        android:inputType="number"
+        android:inputType="number|numberDecimal"
         android:minHeight="48dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
