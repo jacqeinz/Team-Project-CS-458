@@ -323,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
         //execute to add to database
         statement4.bindString(1, "1");
         statement4.bindString(2, "band-aids");
-        statement4.bindLong(3, 10);
+        statement4.bindLong(3, 2);
         statement4.bindString(4, "10.99");
         statement4.bindString(5, "21.98");
         statement4.execute();
