@@ -42,8 +42,8 @@ The motivation behind this project was to be able to develop a dependable app th
 
 Contributors names and contact info
 
-ex. Jacqueline Chavez (jacqueline.chavez@enmu.edu) 
-ex. Ayana Jackson (ayana.jackson@enmu.edu)
+* ex. Jacqueline Chavez (jacqueline.chavez@enmu.edu) 
+* ex. Ayana Jackson (ayana.jackson@enmu.edu)
 
 ## Version History
 * 0.4 Demo 4
