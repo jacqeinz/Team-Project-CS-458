@@ -3,8 +3,11 @@
 //Inventory Tracker
 package com.example.inventorytracker;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -14,14 +17,14 @@ import android.widget.Toast;
 
 public class addInventoryOrder extends AppCompatActivity {
 
-    //assign IDs to variables
+
     //declare variable
     private EditText etOrder2;
     private EditText etOrder3;
     private EditText etOrder4;
     private EditText etOrder5;
     private EditText etOrder6;
-    private Button button;
+    private Button button, button2, button3, button4;
     private DBHelper2 dbHelper2;
 
 
@@ -38,12 +41,14 @@ public class addInventoryOrder extends AppCompatActivity {
         etOrder5 = findViewById(R.id.etProductSupplier);
         etOrder6 = findViewById(R.id.etProductCost);
         button = findViewById(R.id.btnSubmit);
+        button3 = findViewById(R.id.btnView);
 
-        //new  class
+
+        //create new dbhelper2 class
         dbHelper2 = new DBHelper2(addInventoryOrder.this);
 
 
-        //click listener
+        //click listener for insert method
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,27 +59,42 @@ public class addInventoryOrder extends AppCompatActivity {
                 String productSupplier = etOrder5.getText().toString();
                 String productCost = etOrder6.getText().toString();
 
-                if(productName.isEmpty() && amountOrdered.isEmpty()
-                && productCategory.isEmpty() && productSupplier.isEmpty() & productCost.isEmpty()){
-                    Toast.makeText(addInventoryOrder.this, "Please enter info in all text fields", Toast.LENGTH_SHORT).show();
+                //checking if user enter all text fields
+                if (productName.isEmpty() || amountOrdered.isEmpty() || productCategory.isEmpty() || productSupplier.isEmpty() ||
+                productCost.isEmpty()){
+                    Toast.makeText(addInventoryOrder.this, "Enter all fields!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                //method to add invOrder to sqlite
+                //method to add new entry to db
                 dbHelper2.addInvOrder(productName, amountOrdered, productCategory, productSupplier, productCost);
-
-                Toast.makeText(addInventoryOrder.this, "Inventory has been submitted successfully", Toast.LENGTH_SHORT).show();
+                //toast message to confirm entry
+                Toast.makeText(addInventoryOrder.this, "Inventory has been added successfully", Toast.LENGTH_SHORT).show();
                 etOrder2.setText("");
                 etOrder3.setText("");
                 etOrder4.setText("");
                 etOrder5.setText("");
                 etOrder6.setText("");
-
-
             }
         });
 
 
+
+        //view method
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //open new activity to view inventory orders
+                Intent i = new Intent(addInventoryOrder.this, viewInventoryOrders.class);
+                startActivity(i);
+            }
+        });
+
+
+
+
     }
+
+
 
 
 }
