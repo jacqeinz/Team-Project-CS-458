@@ -14,7 +14,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.IOException;
 
+/**
+ * <h1>Add Category</h1>
+ * The addCategory activity allows the user to add a Category to the inventory It takes it
+ * a category description and a name and adds it to the database.
+ * <p>
+ *
+ *
+ * @author  Jacqueline Chavez
+ * @version 1.4
+ * @since   Fall 2022
+ */
 public class addCategory extends AppCompatActivity {
     //declare variables
     EditText name, desc;
@@ -32,7 +44,13 @@ public class addCategory extends AppCompatActivity {
 
         add.setOnClickListener(v -> insert());
     }
-    //insert category
+    /**
+     * This is the insert method. It intakes user input to add a category to the inventory.
+     * @return Nothing.
+     * @exception catch Exception ex. On return error.
+     * @see Exception ex
+     */
+
     public void insert() {
         try {
             //extract values from input

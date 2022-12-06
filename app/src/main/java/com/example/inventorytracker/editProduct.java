@@ -18,7 +18,18 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.widget.Toast;
-
+/**
+ * <h1>Edit Product</h1>
+ * The editProduct activity takes in an ID, name, category,
+ * supplier, quantity, and price
+ * and edits or deletes the selected product.
+ * This activity gets data passed from viewproduct.class
+ * <p>
+ *
+ * @author Jacqueline chavez
+ * @version 1.4
+ * @since   Fall 2022
+ */
 
 public class editProduct extends AppCompatActivity {
     //variables
@@ -132,7 +143,13 @@ public class editProduct extends AppCompatActivity {
     }
 
 
-    //delete supplier
+    /**
+     * This is the delete method which takes in user input and deletes
+     * a selected product and saves to the dabatase.
+     * @return Nothing.
+     * @exception Exception ex On return error.
+     * @see Exception ex
+     */
     public void Delete()
     {
         try
@@ -168,7 +185,13 @@ public class editProduct extends AppCompatActivity {
     }
 
 
-    //edit product
+    /**
+     * This is the edit method which takes in user input and edits
+     * a product and saves it to the dabatase.
+     * @return Nothing.
+     * @exception Exception ex On return error.
+     * @see Exception ex
+     */
     public void Edit() {
         try {
             //get information from EditText

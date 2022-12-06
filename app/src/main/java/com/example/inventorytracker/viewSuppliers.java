@@ -14,7 +14,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-
+/**
+ * <h1>View Suppliers</h1>
+ * This activity takes in the database of suppliers
+ * and displays it
+ * <p>
+ *
+ * @author Jacqueline chavez
+ * @version 1.4
+ * @since   Fall 2022
+ */
 
 public class viewSuppliers extends AppCompatActivity {
     //list varialbes

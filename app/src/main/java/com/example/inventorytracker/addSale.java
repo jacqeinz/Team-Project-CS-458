@@ -20,7 +20,17 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-
+/**
+ * <h1>Add Sale Record</h1>
+ * The addSale activity takes in a product name, product ID,
+ * category, supplier, price, and quantity, total sale and it is
+ * added to the database of the inventory.
+ * <p>
+ *
+ * @author Jacqueline chavez
+ * @version 1.4
+ * @since   Fall 2022
+ */
 public class addSale extends AppCompatActivity {
     //variables
     EditText pid, pname, proqty, price;
@@ -56,6 +66,11 @@ public class addSale extends AppCompatActivity {
        calcSale.setOnClickListener(V -> calculateSale());
 
     }
+    /**
+     * This is the calculateSale method which calculates the total of a sale.
+     * @return Nothing.
+     *
+     */
     public void calculateSale(){
        // calculate sale get qty and price
         Double qtysale = Double.parseDouble(proqty.getText().toString());
@@ -65,7 +80,12 @@ public class addSale extends AppCompatActivity {
        total.setText(String.valueOf(totalSale));
 
    }
-
+    /**
+     * This is the insert method which adds a sale to the database.
+     * @return Nothing.
+     * @exception Exception ex. On return error.
+     * @see Exception ex
+     */
     public void insert() {
         try {
             //read in input
@@ -120,7 +140,7 @@ public class addSale extends AppCompatActivity {
                         //add to databse by binding
                         statement.bindString(1, proid);
                         statement.bindString(2, proname);
-                        statement.bindLong(3, qty);
+                        statement.bindLong(3, qtysale);
                         statement.bindString(4, pricepro);
                         statement.bindString(5, totalsale);
                         statement.execute();
