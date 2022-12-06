@@ -62,10 +62,10 @@ public class updateOrder extends AppCompatActivity {
 
                 // inside this method we are calling an update course
                 // method and passing all our edit text values.
-                dbHelper2.updateInvOrder(productName, productNameEdt.getText().toString(), amountOrderedEdt.getText().toString(), productCatEdt.getText().toString(), productSupEdt.getText().toString(), productCostEdt.getText().toString());
+                dbHelper2.updateInvOrder(productName, productNameEdt.getText().toString(), amountOrderedEdt.getText().toString(), productCatEdt.getText().toString(), productSupEdt.getText().toString());
 
                 // displaying a toast message that our course has been updated.
-                Toast.makeText(updateOrder.this, "Course has been updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(updateOrder.this, "Inventory order has been updated", Toast.LENGTH_SHORT).show();
 
 
                 Intent i = new Intent(updateOrder.this, addInventoryOrder.class);
@@ -84,7 +84,7 @@ public class updateOrder extends AppCompatActivity {
             public void onClick(View v) {
                 // calling a method to delete our course.
                 dbHelper2.deleteOrder(productName);
-                Toast.makeText(updateOrder.this, "Deleted the course", Toast.LENGTH_SHORT).show();
+                Toast.makeText(updateOrder.this, "Deleted inventory", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(updateOrder.this, addInventoryOrder.class);
                 startActivity(i);
             }

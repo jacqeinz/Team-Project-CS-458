@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 /**
- *
+ * @author Ayana Jackson
  */
 public class invOrderRVAdapter extends RecyclerView.Adapter<invOrderRVAdapter.ViewHolder> {
 
@@ -57,24 +57,24 @@ public class invOrderRVAdapter extends RecyclerView.Adapter<invOrderRVAdapter.Vi
      */
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //setting data to recycler view
-        InvOrder invOrder = invOrderArrayList.get(position);
-        holder.productNameTV.setText(invOrder.getProductName());
-        holder.amountOrderedTV.setText(invOrder.getAmountOrdered());
-        holder.prodCateTV.setText(invOrder.getProductCategory());
-        holder.prodSupTV.setText(invOrder.getProductSupplier());
-        holder.productCostTV.setText(invOrder.getProductCost());
-        //click listener for recycler view
+        InvOrder modal = invOrderArrayList.get(position);
+        holder.productNameTV.setText(modal.getProductName());
+        holder.amountOrderedTV.setText(modal.getAmountOrdered());
+        holder.prodCateTV.setText(modal.getProductCategory());
+        holder.prodSupTV.setText(modal.getProductSupplier());
+        holder.productCostTV.setText(modal.getProductCost());
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //call intent
                 Intent i = new Intent(context, updateOrder.class);
                 //pass values
-                i.putExtra("productName", invOrder.getProductName());
-                i.putExtra("amountOrdered", invOrder.getAmountOrdered());
-                i.putExtra("productCategory", invOrder.getProductCategory());
-                i.putExtra("productSupplier", invOrder.getProductSupplier());
-                i.putExtra("productCost", invOrder.getProductCost());
+                i.putExtra("productName", modal.getProductName());
+                i.putExtra("amountOrdered", modal.getAmountOrdered());
+                i.putExtra("productCategory", modal.getProductCategory());
+                i.putExtra("productSupplier", modal.getProductSupplier());
+                i.putExtra("productCost", modal.getProductCost());
 
                 context.startActivity(i);
 
@@ -82,20 +82,12 @@ public class invOrderRVAdapter extends RecyclerView.Adapter<invOrderRVAdapter.Vi
         });
 
     }
-
-    /**
-     *
-     * @return
-     */
-
-    public  int getItemCount(){
+    @Override
+    public int getItemCount(){
         //return size of arraylist
         return invOrderArrayList.size();
     }
 
-    /**
-     *
-     */
     public class ViewHolder extends RecyclerView.ViewHolder{
         //create variable for textview
         private TextView productNameTV, amountOrderedTV, prodCateTV, prodSupTV, productCostTV;
@@ -109,13 +101,6 @@ public class invOrderRVAdapter extends RecyclerView.Adapter<invOrderRVAdapter.Vi
             prodSupTV = itemView.findViewById(R.id.idTVprodSup);
             productCostTV = itemView.findViewById(R.id.idTVprodCost);
         }
-
-
-
-
     }
-
-
-
 
 }

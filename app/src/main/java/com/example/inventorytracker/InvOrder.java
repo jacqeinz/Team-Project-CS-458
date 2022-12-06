@@ -4,7 +4,7 @@ package com.example.inventorytracker;
 //Inventory Tracker
 
 /**
- *
+ * @author Ayana Jackson
  */
 public class InvOrder {
     //variables for table

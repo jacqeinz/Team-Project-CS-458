@@ -1,218 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".addInventoryOrder">
 
-    <TextView
-        android:id="@+id/textView48"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="75dp"
-        android:fontFamily="serif"
-        android:text="@string/product_cost"
-        android:textColor="#286391"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnView"
-        app:layout_constraintEnd_toStartOf="@+id/etProductCost"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView47" />
-
-    <TextView
-        android:id="@+id/textView47"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="60dp"
-        android:fontFamily="serif"
-        android:text="@string/supplier"
-        android:textColor="#286391"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView48"
-        app:layout_constraintEnd_toStartOf="@+id/etProductSupplier"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView46" />
-
-    <TextView
-        android:id="@+id/textView46"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="serif"
-        android:text="@string/category"
-        android:textColor="#286391"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView47"
-        app:layout_constraintEnd_toStartOf="@+id/etProductCategory"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView45" />
-
-    <TextView
-        android:id="@+id/textView45"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="62dp"
-        android:fontFamily="serif"
-        android:text="@string/amount_ordered"
-        android:textColor="#286391"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView46"
-        app:layout_constraintEnd_toStartOf="@+id/etAmountOrdered"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView44" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="422dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="54dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintBottom_toTopOf="@+id/textView44"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/head"
-        tools:ignore="ImageContrastCheck" />
 
     <EditText
         android:id="@+id/etProductName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="21dp"
-        android:ems="10"
-        android:hint="@string/enter_product_name"
+        android:layout_margin="10dp"
+        android:hint="@string/enter_product_name2"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColorHint="#757575"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/etAmountOrdered"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView44" />
+        android:textColorHint="#757575" />
+
 
     <EditText
         android:id="@+id/etAmountOrdered"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:ems="10"
-        android:hint="@string/enter_amount_ordered"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:layout_margin="10dp"
+        android:hint="@string/enter_amount_ordered2"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textColorHint="#757575"
-        android:textSize="16sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView45"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView45" />
+        android:importantForAutofill="no" />
+
 
     <EditText
         android:id="@+id/etProductCategory"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="@string/enter_product_category"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:layout_margin="10dp"
+        android:hint="@string/enter_product_category2"
+        android:inputType="text"
         android:minHeight="48dp"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView46"
-        app:layout_constraintTop_toBottomOf="@+id/etAmountOrdered"
-        tools:ignore="TextContrastCheck" />
+        android:textColorHint="#757575"
+        android:importantForAutofill="no" />
+
 
     <EditText
         android:id="@+id/etProductSupplier"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:ems="10"
-        android:hint="@string/enter_product_supplier"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:layout_margin="10dp"
+        android:hint="@string/enter_product_supplier2"
+        android:inputType="text"
         android:minHeight="48dp"
         android:textColorHint="#757575"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView47"
-        app:layout_constraintTop_toBottomOf="@+id/etProductCategory" />
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/etProductCost"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="6dp"
-        android:ems="10"
-        android:hint="@string/enter_product_cost"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:layout_margin="10dp"
+        android:hint="@string/enter_product_cost2"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textColorHint="#757575"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView48"
-        app:layout_constraintTop_toBottomOf="@+id/etProductSupplier" />
+        android:importantForAutofill="no" />
+
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="47dp"
+        android:layout_margin="10dp"
         android:text="@string/submit"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnView"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textAllCaps="false" />
 
-    <TextView
-        android:id="@+id/textView43"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:fontFamily="serif"
-        android:text="@string/place_an_inventory_order"
-        android:textColor="#D81B60"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView44"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="48dp"
-        android:fontFamily="serif"
-        android:text="@string/product_name"
-        android:textColor="#286391"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView45"
-        app:layout_constraintEnd_toStartOf="@+id/etProductName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
     <Button
         android:id="@+id/btnView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="47dp"
+        android:layout_margin="10dp"
         android:text="@string/view"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSubmit"
-        app:layout_constraintTop_toBottomOf="@+id/textView48" />
+        android:textAllCaps="false" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/idBtnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/delete_order"
+        android:textAllCaps="false" />
+
+
+    <Button
+        android:id="@+id/idBtnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/update_order"
+        android:textAllCaps="false" />
+</LinearLayout>

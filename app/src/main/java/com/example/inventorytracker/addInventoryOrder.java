@@ -4,17 +4,23 @@
 package com.example.inventorytracker;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * @author Ayana Jackson
+ *
+ */
+
+/**
+ *
+ */
 public class addInventoryOrder extends AppCompatActivity {
 
 
@@ -24,11 +30,14 @@ public class addInventoryOrder extends AppCompatActivity {
     private EditText etOrder4;
     private EditText etOrder5;
     private EditText etOrder6;
-    private Button button, button3;
+    private Button button, button3, button4, button2;
     private DBHelper2 dbHelper2;
 
 
-
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +51,8 @@ public class addInventoryOrder extends AppCompatActivity {
         etOrder6 = findViewById(R.id.etProductCost);
         button = findViewById(R.id.btnSubmit);
         button3 = findViewById(R.id.btnView);
+        button4 = findViewById(R.id.idBtnDelete);
+        button2 = findViewById(R.id.idBtnUpdate);
 
 
         //create new dbhelper2 class

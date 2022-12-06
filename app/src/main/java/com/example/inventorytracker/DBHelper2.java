@@ -10,6 +10,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+/**
+ * @author Ayana Jackson
+ */
+
 //declare db table to hold data of user input
 //constant variables for db
 public class DBHelper2 extends SQLiteOpenHelper {
@@ -91,7 +95,7 @@ public class DBHelper2 extends SQLiteOpenHelper {
 
 
     //update method
-    public void updateInvOrder(String OriginalprodName,String productName, String amountOrdered, String productCategory, String productSupplier, String productCost) {
+    public void updateInvOrder(String productName, String amountOrdered, String productCategory, String productSupplier, String productCost) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues value = new ContentValues();
@@ -102,9 +106,7 @@ public class DBHelper2 extends SQLiteOpenHelper {
         value.put(PRODUCT_COST, productCost);
 
         //calling update method
-        db.update(TABLE_NAME,value, "name=?", new String[]{OriginalprodName});
-        db.close();
-    }
+        db.update(TABLE_NAME,value, "name=?", new String[]{productName});}
     //method to delete date
     public void deleteOrder(String productName) {
         SQLiteDatabase db = this.getWritableDatabase();
