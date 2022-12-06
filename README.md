@@ -22,7 +22,7 @@ The motivation behind this project was to be able to develop a dependable app th
 * Open your Android Studio then go to the File > New > Project from Version Control.'
 * After clicking on the Project from Version Control a pop-up screen will arise like below. In the Version control choose Git from the drop-down menu. 
 * Then at last paste the link <https://github.com/jacqeinz/Team-Project-CS-458.git> in the URL and choose your Directory. Click on the Clone button and you are done.
-* Build Project in Android Studio and run program inside Android Studio. 
+* Build Project in Android Studio and run program inside Android Studio with preferred emulator. 
 
 ### Using program
 
