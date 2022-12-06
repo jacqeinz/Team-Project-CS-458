@@ -25,7 +25,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     //declare variables
     TextView MainTitle;
-    Button addPro, AddInv, addSuppplier, addCategory, viewCategories, viewSuppliers, viewInventory, addS, viewSales, addUser, loginU;
+    Button addPro, AddInv, addSuppplier, addCategory, viewCategories, viewSuppliers, viewInventory, addS, viewSales, addUser, loginU, viewInv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         viewCategories = findViewById(R.id.viewCategories);
         viewSuppliers = findViewById(R.id.viewSuppliers);
         viewInventory = findViewById(R.id.viewInventory);
+        viewInv = findViewById(R.id.viewInv);
         addS = findViewById(R.id.addS);
         viewSales = findViewById(R.id.viewSales);
         addUser = findViewById(R.id.addUser);
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         viewSales.setOnClickListener(v -> goToViewSales());
         addUser.setOnClickListener(v -> goToAddUser());
         loginU.setOnClickListener(v -> goToLogin());
+        viewInv.setOnClickListener(v -> goToViewInventoryOrders());
         //run functions to check is databases exist
         if(!checkIfDataExists()) {
             createDatabases();
@@ -135,36 +137,83 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     //view all categories
+    /**
+     * This is the goToViewCategories method which takes the user to the viewCategories
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToViewCategories(){
         Intent intent = new Intent(this, viewCategories.class);
         startActivity(intent);
     }
     //add category to list
+    /**
+     * This is the goToAddCategories
+     * method which takes the user to the addCategory
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToAddCategory(){
         Intent intent = new Intent(this, addCategory.class);
         startActivity(intent);
     }
     //add supplier
+    /**
+     * This is the goToAddSupplier
+     * method which takes the user to the addSupplier
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToAddSupplier(){
         Intent intent = new Intent(this, addSupplier.class);
         startActivity(intent);
     }
     //make inventory order
+    /**
+     * This is the goToAddInventoryOrder
+     * method which takes the user to the addInventory
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToAddInventoryOrder(){
         Intent intent = new Intent(this, addInventoryOrder.class);
         startActivity(intent);
     }
     //view histry of inventory orders
+    /**
+     * This is the goToViewInventoryOrders
+     * method which takes the user to the viewInventoryOrders
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToViewInventoryOrders(){
         Intent intent = new Intent(this, viewInventoryOrders.class);
         startActivity(intent);
     }
     //add product
+    /**
+     * This is the goToAddProduct
+     * method which takes the user to the addProduct
+     * page.
+     * @return Nothing.
+     *
+     */
     public void goToAddProduct(){
         Intent intent = new Intent(this, addProduct.class);
         startActivity(intent);
     }
     //check if databases exist already
+    /**
+     * This is the checkIfDataExists method
+     * checks if there is an existing database
+     * @return Nothing.
+     *
+     */
     private boolean checkIfDataExists(){
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
         Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table' AND name='product'", null);
@@ -174,6 +223,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
     //create databse and add dummy data
+    /**
+     * This is the createDatabases method
+     * create database for product and input dummy data
+     * page.
+     * @return Nothing.
+     *
+     */
     private void createDatabases(){
         //create or open database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
@@ -198,6 +254,13 @@ public class MainActivity extends AppCompatActivity {
         db.close();
     }
     //create databse and add dummy data for
+    /**
+     * This is the createCategoryDatabase
+     * method which creates a table for the categories and inputs dummy data
+     * page.
+     * @return Nothing.
+     *
+     */
     private void createCategoryDatabase(){
         //open or create database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
@@ -214,6 +277,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
     //create databse and add dummy data for suppliers
+    /**
+     * This is the createSupplierDatabase
+     * method which creates a table for the supplier and inputs dummy data
+     * page.
+     * @return Nothing.
+     *
+     */
     private void createSupplierDatabase(){
 
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
@@ -234,6 +304,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
     //create databse and add dummy data for sales
+    /**
+     * This is the goToAddSupplier
+     * method which takes the user to the addSupplier
+     * page.
+     * @return Nothing.
+     *
+     */
     private void createSalesDatabase(){
         //open or create database
         SQLiteDatabase db = openOrCreateDatabase("inventory", Context.MODE_PRIVATE, null);
