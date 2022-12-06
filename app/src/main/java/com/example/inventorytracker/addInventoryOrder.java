@@ -24,7 +24,7 @@ public class addInventoryOrder extends AppCompatActivity {
     private EditText etOrder4;
     private EditText etOrder5;
     private EditText etOrder6;
-    private Button button, button2, button3, button4;
+    private Button button, button3;
     private DBHelper2 dbHelper2;
 
 

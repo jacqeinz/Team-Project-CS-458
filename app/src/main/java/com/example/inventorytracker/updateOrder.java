@@ -10,7 +10,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class updateOrder extends AppCompatActivity {
-
+    /**
+     *
+     */
     // variables for our edit text, button, strings and dbhelper2 class.
     private EditText productNameEdt, amountOrderedEdt, productCatEdt, productSupEdt, productCostEdt;
     private Button updateOrderBtn, deleteOrderBtn;
@@ -21,13 +23,15 @@ public class updateOrder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_inentory_order);
-
+/**
+ *
+ */
         // initializing all our variables.
-        productNameEdt = findViewById(R.id.idEdtproductName);
-        amountOrderedEdt = findViewById(R.id.idEdtAmountOrdered);
-        productCatEdt = findViewById(R.id.idEdtProdCat);
-        productSupEdt = findViewById(R.id.idEdtProdSup);
-        productCostEdt = findViewById(R.id.idEdtProdCost);
+        productNameEdt = findViewById(R.id.etProductName);
+        amountOrderedEdt = findViewById(R.id.etAmountOrdered);
+        productCatEdt = findViewById(R.id.etProductCategory);
+        productSupEdt = findViewById(R.id.etProductSupplier);
+        productCostEdt = findViewById(R.id.etProductCost);
         updateOrderBtn = findViewById(R.id.idBtnUpdate);
         deleteOrderBtn = findViewById(R.id.idBtnDelete);
 
@@ -48,7 +52,9 @@ public class updateOrder extends AppCompatActivity {
         productCatEdt.setText(productCategory);
         productSupEdt.setText(productSupplier);
         productCostEdt.setText(productCost);
-
+/**
+ *
+ */
         // adding on click listener to our update course button.
         updateOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +72,11 @@ public class updateOrder extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
+        /**
+         *
+         */
 
         // adding on click listener for delete button to delete our course.
         deleteOrderBtn.setOnClickListener(new View.OnClickListener() {

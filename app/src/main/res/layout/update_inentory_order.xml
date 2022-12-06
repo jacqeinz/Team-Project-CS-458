@@ -9,7 +9,7 @@
 
 
     <EditText
-        android:id="@+id/idEdtproductName"
+        android:id="@+id/etProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -21,7 +21,7 @@
 
 
     <EditText
-        android:id="@+id/idEdtAmountOrdered"
+        android:id="@+id/etAmountOrdered"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -33,7 +33,7 @@
 
 
     <EditText
-        android:id="@+id/idEdtProdCat"
+        android:id="@+id/etProductCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -45,7 +45,7 @@
 
 
     <EditText
-        android:id="@+id/idEdtProdSup"
+        android:id="@+id/etProductSupplier"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -56,7 +56,7 @@
         android:importantForAutofill="no" />
 
     <EditText
-        android:id="@+id/idEdtProdCost"
+        android:id="@+id/etProductCost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

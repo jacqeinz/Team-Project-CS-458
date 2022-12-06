@@ -42,17 +42,10 @@ public class DBHelper2 extends SQLiteOpenHelper {
         //execute query
         db.execSQL(query);
     }
-
+    //shown last
     //upgrade
     //check if table exists
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("drop table if exists " + TABLE_NAME);
 
-        //create table again
-        onCreate(db);
-
-    }
 
     //add inventory
     public void addInvOrder(String productName, String amountOrdered, String productCategory, String productSupplier, String productCost) {
@@ -71,6 +64,9 @@ public class DBHelper2 extends SQLiteOpenHelper {
         db.close();
 
     }
+
+
+
     //method to read all
     public ArrayList<InvOrder> readInvOrder(){
         //create a db to read db
@@ -81,7 +77,7 @@ public class DBHelper2 extends SQLiteOpenHelper {
         ArrayList<InvOrder> invOrderArrayList = new ArrayList<>();
 
         //move cursor
-        if (cursorInvOrder.moveToNext()){
+        if (cursorInvOrder.moveToFirst()){
             do{
                 invOrderArrayList.add(new InvOrder(cursorInvOrder.getString(1), cursorInvOrder.getString(2),
                         cursorInvOrder.getString(3), cursorInvOrder.getString(4), cursorInvOrder.getString(5)));
@@ -106,7 +102,7 @@ public class DBHelper2 extends SQLiteOpenHelper {
         value.put(PRODUCT_COST, productCost);
 
         //calling update method
-        db.update(TABLE_NAME,value, "productName=?", new String[]{OriginalprodName});
+        db.update(TABLE_NAME,value, "name=?", new String[]{OriginalprodName});
         db.close();
     }
     //method to delete date
@@ -114,10 +110,18 @@ public class DBHelper2 extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         //call delete method
-        db.delete(TABLE_NAME,"productName=?", new String[]{productName});
+        db.delete(TABLE_NAME,"name=?", new String[]{productName});
         db.close();
 
     }
 
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL("drop table if exists " + TABLE_NAME);
+
+        //create table again
+        onCreate(db);
+
+    }
 
 }

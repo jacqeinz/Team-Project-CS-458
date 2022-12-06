@@ -15,17 +15,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class invOrderRVAdapter extends RecyclerView.Adapter<invOrderRVAdapter.ViewHolder> {
 
     //variables for our arraylist and context
     private ArrayList<InvOrder> invOrderArrayList;
     private Context context;
 
+    /**
+     *
+     * @param invOrderArrayList
+     * @param context
+     */
+
     //constructor
     public invOrderRVAdapter(ArrayList<InvOrder> invOrderArrayList, Context context) {
         this.invOrderArrayList = invOrderArrayList;
         this.context = context;
     }
+
+    /**
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
 
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         //to view items in recycler view
@@ -34,7 +50,12 @@ public class invOrderRVAdapter extends RecyclerView.Adapter<invOrderRVAdapter.Vi
 
     }
 
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position){
+    /**
+     *
+     * @param holder
+     * @param position
+     */
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //setting data to recycler view
         InvOrder invOrder = invOrderArrayList.get(position);
         holder.productNameTV.setText(invOrder.getProductName());
@@ -42,7 +63,7 @@ public class invOrderRVAdapter extends RecyclerView.Adapter<invOrderRVAdapter.Vi
         holder.prodCateTV.setText(invOrder.getProductCategory());
         holder.prodSupTV.setText(invOrder.getProductSupplier());
         holder.productCostTV.setText(invOrder.getProductCost());
-
+        //click listener for recycler view
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,13 +80,22 @@ public class invOrderRVAdapter extends RecyclerView.Adapter<invOrderRVAdapter.Vi
 
             }
         });
+
     }
+
+    /**
+     *
+     * @return
+     */
 
     public  int getItemCount(){
         //return size of arraylist
         return invOrderArrayList.size();
     }
 
+    /**
+     *
+     */
     public class ViewHolder extends RecyclerView.ViewHolder{
         //create variable for textview
         private TextView productNameTV, amountOrderedTV, prodCateTV, prodSupTV, productCostTV;
@@ -80,7 +110,11 @@ public class invOrderRVAdapter extends RecyclerView.Adapter<invOrderRVAdapter.Vi
             productCostTV = itemView.findViewById(R.id.idTVprodCost);
         }
 
+
+
+
     }
+
 
 
 

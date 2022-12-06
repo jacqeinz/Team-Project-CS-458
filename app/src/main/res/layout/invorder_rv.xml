@@ -14,57 +14,58 @@
         android:layout_margin="3dp"
         android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/idTVproductName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="3dp"
-        android:text="@string/product_name2"
-        android:textColor="@color/black" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4">
+        <TextView
+            android:id="@+id/idTVproductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="@string/product_name2"
+            android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/idTVamountOrdered"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:padding="3dp"
-        android:text="@string/amount_ordered2"
-        android:textColor="@color/black" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:id="@+id/idTVamountOrdered"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="3dp"
+                android:text="@string/amount_ordered2"
+                android:textColor="@color/black" />
 
 
-    <!--text view for our course duration-->
-    <TextView
-        android:id="@+id/idTVprodCat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:padding="3dp"
-        android:text="@string/product_category2"
-        android:textColor="@color/black" />
+            <!--text view for our course duration-->
+            <TextView
+                android:id="@+id/idTVprodCat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="3dp"
+                android:text="@string/product_category2"
+                android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/idTVprodSup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:padding="3dp"
-        android:text="@string/product_supplier2"
-        android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/idTVprodSup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="3dp"
+                android:text="@string/product_supplier2"
+                android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/idTVprodCost"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:padding="3dp"
-        android:text="@string/product_cost2"
-        android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/idTVprodCost"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="3dp"
+                android:text="@string/product_cost2"
+                android:textColor="@color/black" />
 
-    </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
