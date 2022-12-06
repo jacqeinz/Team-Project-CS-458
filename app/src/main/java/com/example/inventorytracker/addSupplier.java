@@ -19,7 +19,7 @@ import android.widget.Toast;
  * <p>
  *
  * @author Jacqueline chavez
- * @version 1.0
+ * @version 1.4
  * @since   Fall 2022
  */
 public class addSupplier extends AppCompatActivity {
