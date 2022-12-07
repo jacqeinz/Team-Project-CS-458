@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".addInventoryOrder">
+    tools:context=".updateOrder">
 
 
     <EditText
@@ -68,25 +68,13 @@
 
 
     <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        
-        android:fontFamily="serif"
-
-        android:layout_margin="10dp"
-     
-        android:text="@string/submit"
-        android:textAllCaps="false" />
-
-
-    <Button
-        android:id="@+id/btnView"
+        android:id="@+id/idBtnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/view"
+        android:text="@string/update_order"
         android:textAllCaps="false" />
+
 
     <Button
         android:id="@+id/idBtnDelete"
@@ -96,12 +84,4 @@
         android:text="@string/delete_order"
         android:textAllCaps="false" />
 
-
-    <Button
-        android:id="@+id/idBtnUpdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/update_order"
-        android:textAllCaps="false" />
 </LinearLayout>

@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         viewCategories = findViewById(R.id.viewCategories);
         viewSuppliers = findViewById(R.id.viewSuppliers);
         viewInventory = findViewById(R.id.viewInventory);
-        viewInv = findViewById(R.id.viewInv);
         addS = findViewById(R.id.addS);
         viewSales = findViewById(R.id.viewSales);
         addUser = findViewById(R.id.addUser);
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         viewSales.setOnClickListener(v -> goToViewSales());
         addUser.setOnClickListener(v -> goToAddUser());
         loginU.setOnClickListener(v -> goToLogin());
-        viewInv.setOnClickListener(v -> goToViewInventoryOrders());
         //run functions to check is databases exist
         if(!checkIfDataExists()) {
             createDatabases();
@@ -191,10 +189,6 @@ public class MainActivity extends AppCompatActivity {
      * @return Nothing.
      *
      */
-    public void goToViewInventoryOrders(){
-        Intent intent = new Intent(this, viewInventoryOrders.class);
-        startActivity(intent);
-    }
     //add product
     /**
      * This is the goToAddProduct

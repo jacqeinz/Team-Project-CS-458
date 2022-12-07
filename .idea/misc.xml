@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Team-Project-CS-458/app/src/main/res/layout/activity_add_inventory_order.xml" value="0.358695652173913" />
+        <entry key="..\:/Team-Project-CS-458/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Team-Project-CS-458/app/src/main/res/layout/activity_view_inventory_orders.xml" value="0.358695652173913" />
+        <entry key="..\:/Team-Project-CS-458/app/src/main/res/layout/invorder_rv.xml" value="0.358695652173913" />
+        <entry key="..\:/Team-Project-CS-458/app/src/main/res/layout/update_inentory_order.xml" value="0.358695652173913" />
         <entry key="..\:/Users/jacqu/AndroidStudioProjects/InventoryTracker/app/src/main/res/layout-w1240dp/activity_view_suppliers.xml" value="0.19377510040160642" />
         <entry key="..\:/Users/jacqu/AndroidStudioProjects/InventoryTracker/app/src/main/res/layout-w936dp/activity_view_suppliers.xml" value="0.226171875" />
         <entry key="..\:/Users/jacqu/AndroidStudioProjects/InventoryTracker/app/src/main/res/layout/activity_add_category.xml" value="0.33" />

@@ -8,7 +8,7 @@
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string><string/><string/><string/><string/><string/><string/><string/><string/>
+    <string name="login_failed">"Login failed"</string>
     <string name="user_name">User name</string>
     <string name="password">Password</string>
     <string name="register">Register</string>
@@ -24,4 +24,26 @@
     <string name="enter_product_supplier">enter product supplier</string>
     <string name="enter_product_cost">enter product cost</string>
     <string name="submit">submit</string>
+    <string name="place_an_inventory_order">Place an Inventory Order</string>
+    <string name="amount_ordered">Amount Ordered:</string>
+    <string name="product_name">Product Name:</string>
+    <string name="product_cost">Product Cost:</string>
+    <string name="supplier">Supplier</string>
+    <string name="category">Category:</string>
+    <string name="view">View</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
+    <string name="todo">TODO</string>
+    <string name="product_name2">Product Name</string>
+    <string name="amount_ordered2">Amount Ordered</string>
+    <string name="product_category2">Product Category</string>
+    <string name="product_supplier2">Product Supplier</string>
+    <string name="product_cost2">Product Cost</string>
+    <string name="delete_order">Delete order</string>
+    <string name="update_order">Update order</string>
+    <string name="enter_product_name2">Enter product name</string>
+    <string name="enter_product_supplier2">Enter product supplier</string>
+    <string name="enter_product_category2">Enter product category</string>
+    <string name="enter_amount_ordered2">Enter amount ordered</string>
+    <string name="enter_product_cost2">Enter product cost</string>
 </resources>

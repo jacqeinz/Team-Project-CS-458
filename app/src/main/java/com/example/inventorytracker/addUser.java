@@ -58,7 +58,7 @@ public class addUser extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
                             }else{
-                                Toast.makeText(addUser.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(addUser.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                             }
 
                         }
