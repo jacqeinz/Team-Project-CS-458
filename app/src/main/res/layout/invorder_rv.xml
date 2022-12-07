@@ -18,6 +18,7 @@
             android:id="@+id/idTVproductName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif"
             android:padding="3dp"
             android:text="@string/product_name2"
             android:textColor="@color/black" />
