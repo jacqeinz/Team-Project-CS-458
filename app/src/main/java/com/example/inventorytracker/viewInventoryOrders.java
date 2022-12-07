@@ -3,12 +3,11 @@
 //Inventory Tracker
 package com.example.inventorytracker;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -30,7 +29,7 @@ public class viewInventoryOrders extends AppCompatActivity {
         dbHelper2 = new DBHelper2(viewInventoryOrders.this);
 
         //get inventory order list from dbhelper2 class
-        invOrderArrayList = dbHelper2.readInvOrder();
+        invOrderArrayList = dbHelper2.readOrders();
 
         //pass array to adapter class
         invOrderRVAdapter = new invOrderRVAdapter(invOrderArrayList, viewInventoryOrders.this);

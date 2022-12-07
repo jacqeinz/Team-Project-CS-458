@@ -2,12 +2,17 @@
 //CS 458
 //Inventory Tracker
 package com.example.inventorytracker;
+
+import static android.os.Build.ID;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TextView;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 /**
@@ -32,19 +37,24 @@ public class DBHelper2 extends SQLiteOpenHelper {
     //constructor
     public DBHelper2(Context context) {
 
-        super(context, DB2NAME, null, DB_VERSION);
+        super(context,DB2NAME, null, DB_VERSION);
     }
 
     //create the table, set table to data types
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + TABLE_NAME + " (" + PRODUCT_ID +
-                " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_NAME + " TEXT,"
+        String table_query = "CREATE TABLE " + TABLE_NAME + " (" + PRODUCT_ID +
+                " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + " TEXT,"
                 + AMOUNT_ORDERED + " TEXT," + PRODUCT_CATEGORY + " TEXT," + PRODUCT_SUPPLIER
-                + " TEXT," + PRODUCT_COST + " TEXT)";
+                + " TEXT," + PRODUCT_COST + " TEXT )";
 
         //execute query
-        db.execSQL(query);
+        db.execSQL(table_query);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
     }
     //shown last
     //upgrade
@@ -52,78 +62,38 @@ public class DBHelper2 extends SQLiteOpenHelper {
 
 
     //add inventory
-    public void addInvOrder(String productName, String amountOrdered, String productCategory, String productSupplier, String productCost) {
-        //writable method
+    void addInvOrder(String productName, String amountOrdered, String productCategory, String productSupplier,
+                     String productCost) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues value = new ContentValues();
-        //pass values
-        value.put(PRODUCT_NAME, productName);
-        value.put(AMOUNT_ORDERED, amountOrdered);
-        value.put(PRODUCT_CATEGORY, productCategory);
-        value.put(PRODUCT_SUPPLIER, productSupplier);
-        value.put(PRODUCT_COST, productCost);
-        //insert values in table after passing then close db
-        db.insert(TABLE_NAME, null, value);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PRODUCT_NAME, productName);
+        contentValues.put(AMOUNT_ORDERED, amountOrdered);
+        contentValues.put(PRODUCT_CATEGORY, productCategory);
+        contentValues.put(PRODUCT_SUPPLIER, productSupplier);
+        contentValues.put(PRODUCT_COST, productCost);
+        db.insert(TABLE_NAME,null, contentValues);
         db.close();
 
     }
 
+    public ArrayList<InvOrder> readOrders(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_NAME, null);
 
-
-    //method to read all
-    public ArrayList<InvOrder> readInvOrder(){
-        //create a db to read db
-        SQLiteDatabase db = this.getReadableDatabase();
-        //cursor with query to read data
-        Cursor cursorInvOrder = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        //new arraylist
         ArrayList<InvOrder> invOrderArrayList = new ArrayList<>();
 
-        //move cursor
-        if (cursorInvOrder.moveToFirst()){
+        if(cursor.moveToFirst()) {
             do{
-                invOrderArrayList.add(new InvOrder(cursorInvOrder.getString(1), cursorInvOrder.getString(2),
-                        cursorInvOrder.getString(3), cursorInvOrder.getString(4), cursorInvOrder.getString(5)));
-            }while (cursorInvOrder.moveToNext());
-            //move cursor to next
-        }
-        //return arraylist  and read
-        cursorInvOrder.close();
+                invOrderArrayList.add(new InvOrder(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5)));
+            } while (cursor.moveToNext());
+
+            }
+        cursor.close();
         return invOrderArrayList;
-    }
+        }
 
-
-    //update method
-    public void updateInvOrder(String productName, String amountOrdered, String productCategory, String productSupplier, String productCost) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues value = new ContentValues();
-        value.put(PRODUCT_NAME, productName);
-        value.put(AMOUNT_ORDERED, amountOrdered);
-        value.put(PRODUCT_CATEGORY, productCategory);
-        value.put(PRODUCT_SUPPLIER, productSupplier);
-        value.put(PRODUCT_COST, productCost);
-
-        //calling update method
-        db.update(TABLE_NAME,value, "name=?", new String[]{productName});}
-    //method to delete date
-    public void deleteOrder(String productName) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        //call delete method
-        db.delete(TABLE_NAME,"name=?", new String[]{productName});
-        db.close();
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("drop table if exists " + TABLE_NAME);
-
-        //create table again
-        onCreate(db);
-
-    }
-
+  }  }
+ }
 }
+

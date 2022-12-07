@@ -84,20 +84,11 @@
         android:text="@string/view"
         android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/idBtnDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/delete_order"
-        android:textAllCaps="false" />
 
 
-    <Button
-        android:id="@+id/idBtnUpdate"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/update_order"
-        android:textAllCaps="false" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"></LinearLayout>
+
 </LinearLayout>

@@ -56,22 +56,7 @@ public class updateOrder extends AppCompatActivity {
  *
  */
         // adding on click listener to our update course button.
-        updateOrderBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                // inside this method we are calling an update course
-                // method and passing all our edit text values.
-                dbHelper2.updateInvOrder(productName, productNameEdt.getText().toString(), amountOrderedEdt.getText().toString(), productCatEdt.getText().toString(), productSupEdt.getText().toString());
-
-                // displaying a toast message that our course has been updated.
-                Toast.makeText(updateOrder.this, "Inventory order has been updated", Toast.LENGTH_SHORT).show();
-
-
-                Intent i = new Intent(updateOrder.this, addInventoryOrder.class);
-                startActivity(i);
-            }
-        });
 
 
         /**
