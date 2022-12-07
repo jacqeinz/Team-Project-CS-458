@@ -15,6 +15,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+/**
+ * @author Ayana Jackson
+ *
+ */
 
 public class addUser extends AppCompatActivity {
 

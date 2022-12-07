@@ -11,6 +11,10 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
+/**
+ * @author Ayana Jackson
+ *
+ */
 
 public class viewInventoryOrders extends AppCompatActivity {
 
