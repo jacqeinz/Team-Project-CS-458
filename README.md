@@ -25,7 +25,8 @@ The motivation behind this project was to be able to develop a dependable app th
 * Build Project in Android Studio and run program inside Android Studio with preferred emulator. 
 
 ### Using program
-
+* Here the Main Menu is shown in an image below. 
+* Functions of the Application: 
 * Add, edit delete suppliers.
 * Add, edit, delete categories. 
 * Add, edit, deleted products. 
