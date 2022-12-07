@@ -8,22 +8,22 @@
 
     <Button
         android:id="@+id/addPro"
-        android:layout_width="179dp"
-        android:layout_height="60dp"
+        android:layout_width="165dp"
+        android:layout_height="66dp"
         android:fontFamily="serif"
         android:text="Add Product"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.517" />
+        app:layout_constraintVertical_bias="0.58" />
 
     <Button
         android:id="@+id/AddInv"
-        android:layout_width="191dp"
+        android:layout_width="178dp"
         android:layout_height="60dp"
         android:fontFamily="serif"
         android:text="Add Inventory Orders"
@@ -31,44 +31,61 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintHorizontal_bias="0.939"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.755" />
+        app:layout_constraintVertical_bias="0.944" />
 
     <Button
+
+        android:id="@+id/viewInv"
+        android:layout_width="174dp"
+        android:layout_height="65dp"
+        android:fontFamily="serif"
+        android:text="View Inventory Orders"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.944" />
+
+    <Button
+
         android:id="@+id/addSupplier"
-        android:layout_width="158dp"
-        android:layout_height="57dp"
+        android:layout_width="174dp"
+        android:layout_height="66dp"
         android:fontFamily="serif"
         android:text="Add supplier"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintVertical_bias="0.827" />
 
     <Button
         android:id="@+id/addCategory"
-        android:layout_width="155dp"
-        android:layout_height="55dp"
+        android:layout_width="165dp"
+        android:layout_height="62dp"
         android:fontFamily="serif"
         android:text="Add Category"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.917"
+        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513" />
+        app:layout_constraintVertical_bias="0.576" />
 
     <Button
         android:id="@+id/viewSuppliers"
-        android:layout_width="161dp"
+        android:layout_width="175dp"
         android:layout_height="65dp"
         android:fontFamily="serif"
         android:text="View Suppliers"
@@ -76,30 +93,30 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.878" />
+        app:layout_constraintVertical_bias="0.825" />
 
     <Button
         android:id="@+id/viewInventory"
-        android:layout_width="184dp"
-        android:layout_height="62dp"
+        android:layout_width="168dp"
+        android:layout_height="67dp"
         android:fontFamily="serif"
         android:text="View Inventory"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.633" />
+        app:layout_constraintVertical_bias="0.706" />
 
     <Button
         android:id="@+id/addS"
-        android:layout_width="160dp"
-        android:layout_height="59dp"
+        android:layout_width="172dp"
+        android:layout_height="63dp"
         android:fontFamily="serif"
         android:text="Add Sale"
         android:textAlignment="center"
@@ -109,11 +126,11 @@
         app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.274" />
+        app:layout_constraintVertical_bias="0.327" />
 
     <Button
         android:id="@+id/viewSales"
-        android:layout_width="158dp"
+        android:layout_width="168dp"
         android:layout_height="64dp"
         android:fontFamily="serif"
         android:text="View Sales"
@@ -121,30 +138,30 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.392" />
+        app:layout_constraintVertical_bias="0.448" />
 
     <Button
         android:id="@+id/addUser"
-        android:layout_width="174dp"
-        android:layout_height="60dp"
+        android:layout_width="165dp"
+        android:layout_height="69dp"
         android:fontFamily="serif"
         android:text="Add User"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396" />
+        app:layout_constraintVertical_bias="0.451" />
 
     <Button
         android:id="@+id/loginU"
-        android:layout_width="173dp"
-        android:layout_height="56dp"
+        android:layout_width="167dp"
+        android:layout_height="60dp"
         android:fontFamily="serif"
         android:text="Login"
         android:textAlignment="center"
@@ -152,10 +169,10 @@
         app:iconTint="#572844"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.277" />
+        app:layout_constraintVertical_bias="0.332" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -163,39 +180,36 @@
         android:layout_height="1465dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.607"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintVertical_bias="0.001"
         app:srcCompat="@drawable/pinkbg" />
 
     <Button
         android:id="@+id/viewCategories"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
+        android:layout_width="170dp"
+        android:layout_height="62dp"
         android:fontFamily="serif"
         android:text="View Categories"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintVertical_bias="0.708" />
 
-    <TextView
-        android:id="@+id/MainTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:fontFamily="serif"
-        android:text="Inventory"
-        android:textSize="34sp"
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="195dp"
+        android:layout_height="155dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.046"
+        app:srcCompat="@drawable/logoit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

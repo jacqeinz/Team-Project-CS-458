@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //connect UI components
         setContentView(R.layout.activity_main);
-        MainTitle = findViewById(R.id.MainTitle);
+
         addPro = findViewById(R.id.addPro);
         AddInv = findViewById(R.id.AddInv);
         addSuppplier = findViewById(R.id.addSupplier);
@@ -234,8 +234,8 @@ public class MainActivity extends AppCompatActivity {
         //create statement to insert
         SQLiteStatement statement = db.compileStatement(sql);
         //bind dummy data to statement
-        statement.bindString(1, "band-aids");
-        statement.bindString(2, "blue");
+        statement.bindString(1, "Band-Aids");
+        statement.bindString(2, "Blue");
         statement.bindString(3, "Johnson & Johnson");
         statement.bindString(4, "20");
         statement.bindString(5, "10.99");
@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
         //create statement to insert categories
         SQLiteStatement statement2 = db.compileStatement(sql2);
         //bind dummy data to statement to add
-        statement2.bindString(1, "blue");
+        statement2.bindString(1, "Blue");
         statement2.bindString(2, "Categorized by the color blue.");
         statement2.execute();
         db.close();
@@ -316,8 +316,8 @@ public class MainActivity extends AppCompatActivity {
         SQLiteStatement statement4 = db.compileStatement(sql4);
         //execute to add to database
         statement4.bindString(1, "1");
-        statement4.bindString(2, "band-aids");
-        statement4.bindLong(3, 10);
+        statement4.bindString(2, "Band-Aids");
+        statement4.bindLong(3, 2);
         statement4.bindString(4, "10.99");
         statement4.bindString(5, "21.98");
         statement4.execute();
