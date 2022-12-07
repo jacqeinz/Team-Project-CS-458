@@ -11,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class updateOrder extends AppCompatActivity {
     /**
+     * @author Ayana Jackson
      *
      */
+
     // variables for our edit text, button, strings and dbhelper2 class.
     private EditText productNameEdt, amountOrderedEdt, productCatEdt, productSupEdt, productCostEdt;
     private Button updateOrderBtn, deleteOrderBtn;

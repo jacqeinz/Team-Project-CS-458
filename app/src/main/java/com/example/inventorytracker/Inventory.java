@@ -1,4 +1,8 @@
 package com.example.inventorytracker;
+/**
+ * @author Ayana Jackson
+ *
+ */
 
 public class Inventory {
     int productID;
