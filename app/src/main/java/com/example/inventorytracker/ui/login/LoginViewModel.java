@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
+import com.example.inventorytracker.R;
 import com.example.inventorytracker.data.LoginRepository;
 import com.example.inventorytracker.data.Result;
 import com.example.inventorytracker.data.model.LoggedInUser;
-import com.example.inventorytracker.R;
 
 public class LoginViewModel extends ViewModel {
 
