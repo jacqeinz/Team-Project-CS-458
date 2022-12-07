@@ -154,12 +154,12 @@
         app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444" />
+        app:layout_constraintVertical_bias="0.451" />
 
     <Button
         android:id="@+id/loginU"
-        android:layout_width="164dp"
-        android:layout_height="58dp"
+        android:layout_width="167dp"
+        android:layout_height="60dp"
         android:fontFamily="serif"
         android:text="Login"
         android:textAlignment="center"
@@ -167,10 +167,10 @@
         app:iconTint="#572844"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintVertical_bias="0.332" />
 
     <ImageView
         android:id="@+id/imageView4"

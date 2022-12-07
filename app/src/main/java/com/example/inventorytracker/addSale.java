@@ -134,7 +134,7 @@ public class addSale extends AppCompatActivity {
                         //create or open database
                         db.execSQL("CREATE TABLE IF NOT EXISTS sales(proid VARCHAR,proname VARCHAR,qty VARCHAR, price VARCHAR,total VARCHAR)");
                         //create rows
-                        String sql = "insert into sales(proid,proname,qty,price,total)values(?,?,?,?,?)";
+                        String sql = "insert into sales(proname,qty,price,total)values(?,?,?,?)";
                         //create statement
                         SQLiteStatement statement = db.compileStatement(sql);
                         //add to databse by binding

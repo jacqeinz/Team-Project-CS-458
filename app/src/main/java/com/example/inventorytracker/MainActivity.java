@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //connect UI components
         setContentView(R.layout.activity_main);
+
         addPro = findViewById(R.id.addPro);
         AddInv = findViewById(R.id.AddInv);
         addSuppplier = findViewById(R.id.addSupplier);
